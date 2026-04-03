@@ -1,0 +1,2677 @@
+{
+  "views": [
+    {
+      "type": "sections",
+      "max_columns": 4,
+      "path": "radar-combined",
+      "title": "Radars",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "entities",
+              "title": "Radar",
+              "entities": [
+                "input_select.radar_dashboard_location"
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Detection",
+              "heading_style": "title",
+              "icon": "mdi:account",
+              "badges": [
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_presence",
+                  "name": "Presence",
+                  "color": "state",
+                  "state_content": "name",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_moving_target",
+                  "name": "Moving",
+                  "icon": "mdi:run-fast",
+                  "color": "state",
+                  "state_content": "name",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_still_target",
+                  "name": "Still",
+                  "icon": "mdi:human-male",
+                  "color": "state",
+                  "state_content": "name",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_presence",
+                  "name": "Presence"
+                },
+                {
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_moving_target",
+                  "name": "Moving"
+                },
+                {
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_still_target",
+                  "name": "Still"
+                }
+              ],
+              "hours_to_show": 0.15,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "icon": "mdi:cog",
+              "heading": "Configuration",
+              "heading_style": "title",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_timeout",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Timeout",
+              "icon": "mdi:timer",
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_maximum_distance_gate",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Max gate",
+              "icon": "mdi:gate",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_minimum_distance_gate",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Min gate",
+              "icon": "mdi:gate",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode"
+                }
+              ],
+              "state_color": true,
+              "show_header_toggle": false,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+              "features_position": "bottom",
+              "vertical": false,
+              "name": "Engineering mode",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "button.ld2412_c3_5_hal_voordeur_query_params",
+              "features_position": "bottom",
+              "vertical": false,
+              "name": "Query params",
+              "hide_state": true,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_5_hal_voordeur_esp_temperature",
+              "name": "Internal temperature",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_5_hal_voordeur_rssi",
+              "name": "WiFi RSSI",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_timeout",
+              "name": "Uptime",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_5_hal_voordeur_light",
+              "icon": "mdi:sun-wireless-outline",
+              "color": "yellow",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Detection",
+              "heading_style": "title",
+              "icon": "mdi:account",
+              "badges": [
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_presence",
+                  "name": "Presence",
+                  "color": "state",
+                  "state_content": "name",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_moving_target",
+                  "name": "Moving",
+                  "icon": "mdi:run-fast",
+                  "color": "state",
+                  "state_content": "name",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_still_target",
+                  "name": "Still",
+                  "icon": "mdi:human-male",
+                  "color": "state",
+                  "state_content": "name",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "history-graph",
+              "entities": [
+                {
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_presence",
+                  "name": "Presence"
+                },
+                {
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_moving_target",
+                  "name": "Moving"
+                },
+                {
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_still_target",
+                  "name": "Still"
+                }
+              ],
+              "hours_to_show": 0.15,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "icon": "mdi:cog",
+              "heading": "Configuration",
+              "heading_style": "title",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_timeout",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Timeout",
+              "icon": "mdi:timer",
+              "features": [
+                {
+                  "type": "numeric-input",
+                  "style": "buttons"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_maximum_distance_gate",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Max gate",
+              "icon": "mdi:gate",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_minimum_distance_gate",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Min gate",
+              "icon": "mdi:gate",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode"
+                }
+              ],
+              "state_color": true,
+              "show_header_toggle": false,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+              "features_position": "bottom",
+              "vertical": false,
+              "name": "Engineering mode",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "button.ld2412_c3_2_werkkamer_query_params",
+              "features_position": "bottom",
+              "vertical": false,
+              "name": "Query params",
+              "hide_state": true,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_2_werkkamer_internal_temp",
+              "features_position": "bottom",
+              "vertical": false,
+              "name": "Internal temperature",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_2_werkkamer_wi_fi_rssi",
+              "name": "WiFi RSSI",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_2_werkkamer_uptime",
+              "name": "Uptime",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.ld2412_c3_2_werkkamer_light",
+              "icon": "mdi:sun-wireless-outline",
+              "color": "yellow",
+              "vertical": false,
+              "features_position": "bottom",
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            }
+          ],
+          "column_span": 1
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Still",
+              "heading_style": "title",
+              "icon": "mdi:human-male",
+              "badges": [
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_still_target",
+                  "color": "state",
+                  "icon": "mdi:human-male"
+                },
+                {
+                  "type": "entity",
+                  "entity": "sensor.ld2412_c3_5_hal_voordeur_still_distance"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "custom:plotly-graph",
+              "refresh_interval": 1,
+              "hours_to_show": "current_day",
+              "layout": {
+                "height": 350,
+                "margin": {
+                  "l": 50,
+                  "r": 50,
+                  "t": 50,
+                  "b": 50
+                },
+                "showlegend": true,
+                "legend": {
+                  "x": 0.3,
+                  "y": -0.3
+                },
+                "xaxis": {
+                  "dtick": 1,
+                  "type": "number",
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    13
+                  ]
+                },
+                "yaxis": {
+                  "dtick": 10,
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    100
+                  ]
+                }
+              },
+              "entities": [
+                {
+                  "entity": "",
+                  "name": "Threshold",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "FB239F"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g0_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g1_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g2_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g3_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g4_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g5_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g6_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g7_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g8_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g9_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g10_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g11_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g12_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g13_still_threshold\"].state"
+                  ]
+                },
+                {
+                  "entity": "",
+                  "name": "Energy",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "blue"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g0_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g1_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g2_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g3_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g4_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g5_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g6_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g7_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g8_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g9_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g10_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g11_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g12_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g13_still_energy\"].state"
+                  ]
+                }
+              ],
+              "raw_plotly_config": true,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g0_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 0 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g1_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 1 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g2_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 2 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g3_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 3 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g4_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 4 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g5_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 5 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g6_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 6 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g7_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 7 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g8_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 8 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g9_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 9 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g10_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 10 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g11_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 11 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g12_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 12 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g13_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 13 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Still",
+              "heading_style": "title",
+              "icon": "mdi:human-male",
+              "badges": [
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_still_target",
+                  "color": "state",
+                  "icon": "mdi:human-male"
+                },
+                {
+                  "type": "entity",
+                  "entity": "sensor.ld2412_c3_2_werkkamer_still_distance"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "custom:plotly-graph",
+              "refresh_interval": 1,
+              "hours_to_show": "current_day",
+              "layout": {
+                "height": 350,
+                "margin": {
+                  "l": 50,
+                  "r": 50,
+                  "t": 50,
+                  "b": 50
+                },
+                "showlegend": true,
+                "legend": {
+                  "x": 0.3,
+                  "y": -0.3
+                },
+                "xaxis": {
+                  "dtick": 1,
+                  "type": "number",
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    13
+                  ]
+                },
+                "yaxis": {
+                  "dtick": 10,
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    100
+                  ]
+                }
+              },
+              "entities": [
+                {
+                  "entity": "",
+                  "name": "Threshold",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "FB239F"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g0_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g1_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g2_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g3_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g4_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g5_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g6_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g7_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g8_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g9_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g10_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g11_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g12_still_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g13_still_threshold\"].state"
+                  ]
+                },
+                {
+                  "entity": "",
+                  "name": "Energy",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "blue"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g0_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g1_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g2_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g3_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g4_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g5_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g6_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g7_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g8_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g9_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g10_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g11_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g12_still_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g13_still_energy\"].state"
+                  ]
+                }
+              ],
+              "raw_plotly_config": true,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g0_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 0 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g1_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 1 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g2_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 2 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g3_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 3 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g4_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 4 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g5_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 5 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g6_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 6 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g7_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 7 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g8_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 8 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g9_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 9 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g10_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 10 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g11_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 11 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g12_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 12 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g13_still_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 13 still threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Moving",
+              "heading_style": "title",
+              "icon": "mdi:run-fast",
+              "badges": [
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_5_hal_voordeur_moving_target",
+                  "icon": "mdi:run-fast",
+                  "color": "state"
+                },
+                {
+                  "type": "entity",
+                  "entity": "sensor.ld2412_c3_5_hal_voordeur_moving_distance"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "custom:plotly-graph",
+              "refresh_interval": 1,
+              "hours_to_show": "current_day",
+              "layout": {
+                "height": 350,
+                "margin": {
+                  "l": 50,
+                  "r": 50,
+                  "t": 50,
+                  "b": 50
+                },
+                "showlegend": true,
+                "legend": {
+                  "x": 0.3,
+                  "y": -0.3
+                },
+                "xaxis": {
+                  "dtick": 1,
+                  "type": "number",
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    13
+                  ]
+                },
+                "yaxis": {
+                  "dtick": 10,
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    100
+                  ]
+                }
+              },
+              "entities": [
+                {
+                  "entity": "",
+                  "name": "Threshold",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "FB239F"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g0_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g1_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g2_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g3_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g4_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g5_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g6_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g7_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g8_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g9_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g10_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g11_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g12_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_5_hal_voordeur_g13_move_threshold\"].state"
+                  ]
+                },
+                {
+                  "entity": "",
+                  "name": "Energy",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "blue"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g0_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g1_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g2_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g3_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g4_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g5_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g6_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g7_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g8_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g9_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g10_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g11_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g12_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_5_hal_voordeur_g13_move_energy\"].state"
+                  ]
+                }
+              ],
+              "raw_plotly_config": true,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g0_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 0 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g1_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 1 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g2_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 2 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g3_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 3 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g4_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 4 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g5_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 5 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g6_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 6 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g7_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 7 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g8_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 8 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g9_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 9 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g10_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 10 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g11_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 11 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g12_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 12 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_5_hal_voordeur_g13_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 13 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_5_hal_voordeur_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Hal"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "heading": "Moving",
+              "heading_style": "title",
+              "icon": "mdi:run-fast",
+              "badges": [
+                {
+                  "type": "entity",
+                  "show_state": true,
+                  "show_icon": true,
+                  "entity": "binary_sensor.ld2412_c3_2_werkkamer_moving_target",
+                  "icon": "mdi:run-fast",
+                  "color": "state"
+                },
+                {
+                  "type": "entity",
+                  "entity": "sensor.ld2412_c3_2_werkkamer_moving_distance"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "custom:plotly-graph",
+              "refresh_interval": 1,
+              "hours_to_show": "current_day",
+              "layout": {
+                "height": 350,
+                "margin": {
+                  "l": 50,
+                  "r": 50,
+                  "t": 50,
+                  "b": 50
+                },
+                "showlegend": true,
+                "legend": {
+                  "x": 0.3,
+                  "y": -0.3
+                },
+                "xaxis": {
+                  "dtick": 1,
+                  "type": "number",
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    13
+                  ]
+                },
+                "yaxis": {
+                  "dtick": 10,
+                  "fixedrange": true,
+                  "range": [
+                    0,
+                    100
+                  ]
+                }
+              },
+              "entities": [
+                {
+                  "entity": "",
+                  "name": "Threshold",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "FB239F"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g0_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g1_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g2_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g3_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g4_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g5_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g6_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g7_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g8_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g9_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g10_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g11_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g12_move_threshold\"].state",
+                    "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g13_move_threshold\"].state"
+                  ]
+                },
+                {
+                  "entity": "",
+                  "name": "Energy",
+                  "mode": "lines",
+                  "line": {
+                    "shape": "spline",
+                    "width": 2,
+                    "color": "blue"
+                  },
+                  "x": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13
+                  ],
+                  "y": [
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g0_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g1_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g2_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g3_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g4_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g5_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g6_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g7_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g8_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g9_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g10_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g11_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g12_move_energy\"].state",
+                    "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g13_move_energy\"].state"
+                  ]
+                }
+              ],
+              "raw_plotly_config": true,
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g0_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 0 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g1_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 1 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g2_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 2 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g3_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 3 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g4_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 4 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g5_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 5 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g6_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 6 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g7_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 7 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g8_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 8 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g9_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 9 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g10_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 10 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g11_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 11 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g12_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 12 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "number.ld2412_c3_2_werkkamer_g13_move_threshold",
+              "features_position": "inline",
+              "vertical": false,
+              "name": "Gate 13 move threshold",
+              "icon": "mdi:run-fast",
+              "features": [
+                {
+                  "style": "slider",
+                  "type": "numeric-input"
+                }
+              ],
+              "visibility": [
+                {
+                  "condition": "state",
+                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "state": "on"
+                },
+                {
+                  "condition": "state",
+                  "entity": "input_select.radar_dashboard_location",
+                  "state": "Werkkamer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": []
+        }
+      ]
+    }
+  ]
+}
