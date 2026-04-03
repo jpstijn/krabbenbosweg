@@ -1,0 +1,23 @@
+# External antenna control using ESPHome 2025.12+ board aliases (FM8625H RF switch)
+# RF_SWITCH_EN (GPIO3) = RF switch power, RF_ANT_SELECT (GPIO14) = antenna selector
+output:
+    - platform: gpio
+      id: rf_switch_enable
+      pin: RF_SWITCH_EN
+
+    - platform: gpio
+      id: rf_antenna_select
+      pin: RF_ANT_SELECT
+
+# Switches
+switch:
+    - platform: template
+      name: "External Antenna"
+      optimistic: true
+      restore_mode: ALWAYS_ON
+      turn_on_action:
+          - output.turn_off: rf_switch_enable    # LOW -> RF switch power ON
+          - output.turn_on: rf_antenna_select    # HIGH -> external antenna (U.FL/RF2)
+      turn_off_action:
+          - output.turn_off: rf_switch_enable    # LOW -> RF switch power ON
+          - output.turn_off: rf_antenna_select   # LOW -> internal antenna (PCB/RF1)

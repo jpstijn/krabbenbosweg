@@ -1,0 +1,35 @@
+substitutions:
+  name: kelder-ht-en-ha-htp
+  friendly_name: Kelder H&T en HA H&Tp
+
+packages:
+  device: !include Common/esp32-c3.yaml
+
+
+i2c:
+  sda: GPIO03
+  scl: GPIO04
+  scan: True
+  id: bus_a
+
+
+sensor:
+  - platform: bme280_i2c
+    address: 0x76
+    temperature:
+      name: HA Temperatuur
+      filters:
+      - offset: 0.3
+    pressure:
+      name: HA Pressure
+    humidity:
+      name: HA Vochtigheid
+    update_interval: 60s
+  - platform: sht4x
+    address: 0x44
+    temperature:
+      name: Temperatuur Kelder
+    humidity:
+      name: Vochtigheid Kleder
+    update_interval: 60s
+    

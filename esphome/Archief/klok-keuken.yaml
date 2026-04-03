@@ -1,0 +1,256 @@
+substitutions:
+  # Set the device name
+  name: klok-keuken
+  friendly_name: Klok Keuken
+  # Set the friendly name
+  # 160000000L of 80000000L = 80Mhz of 160Mhz Cpu frequentie
+  f_cpu: 80000000L  
+  # I define each device with its own static IP.
+  #ip_address: 192.168.1.229
+  
+
+packages:
+  common: !include Common/common-esp32.yaml
+  # gebruik Arduino library
+  #esp32-c3-arduino: !include Common/esp32-c3-arduino.yaml
+  # gebruik ESP-IDF an alternative base framework for ESP32 chips;
+  # it is recommended for variants of the ESP32 like ESP32S2, ESP32S3, ESP32C3 and single-core ESP32 chips.
+  esp32-c3-idf: !include Common/esp32-c3-idf.yaml
+# web server aanzetten of uit met #
+  web-server: !include Common/web-server.yaml
+#  einde vaste standaard project template yaml deel
+####################################################################################
+
+# [strapping] pins GPIO 2 [RTC], GPIO 8  (Must be HIGH during reset in all cases)
+# GPIO 9 - [internal PU] [strapping]  Works as normal GPIOs after reset
+# GPIO 20 - RxD , GPIO 21 - TxD for UART download and logs
+
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: Europe/Amsterdam
+
+spi:
+  clk_pin: GPIO5
+  mosi_pin: GPIO6
+
+text_sensor:
+  - platform: homeassistant
+    id: my_ha_message # Add an ID to easily reference it
+    name: "My HA Message"
+    entity_id: input_text.displaytxt
+
+sensor:
+  - platform: homeassistant
+    id: my_temp # Add an ID to easily reference it
+    name: "My Temp"
+    entity_id: sensor.pir_tuinkast_temperatuur
+  - platform: homeassistant
+    id: my_hum # Add an ID to easily reference it
+    name: "My Humi"
+    entity_id: sensor.woonkamer_co2thl_dht22_temperatuur
+  - platform: homeassistant
+    id: my_co2 # Add an ID to easily reference it
+    name: "My Co2"
+    entity_id: sensor.woonkamer_co2thl_co2
+
+#sensor.pir_tuinkast_temperatuur
+#sensor.woonkamer_co2thl_co2
+#sensor.woonkamer_co2thl_dht22_temperatuur
+
+display:
+  - platform: ssd1322_spi
+    model: "SSD1322 256x64"
+    brightness: 0.5
+    id: my_display
+    reset_pin: GPIO10
+    cs_pin: GPIO7
+    dc_pin: GPIO9
+    pages:
+      - id: page1
+        lambda: |-
+          it.strftime(128, 0, id(font6), TextAlign::TOP_CENTER, "%H:%M.%S", id(homeassistant_time).now());
+#it.strftime(128, 0, id(font6), TextAlign::TOP_CENTER, "%D", id(homeassistant_time).now());
+#it.strftime(128, 0, id(font6), TextAlign::TOP_CENTER, "%H:%M.%S", id(sntp_time).now());
+#it.printf(190, 0, id(font3), TextAlign::TOP_RIGHT, "co2:%.0fppm", id(my_co2).state);
+      - id: page2
+        lambda: |-
+          it.strftime(0, 0, id(font4), TextAlign::TOP_LEFT, "%H:%M.%S  %d-%m/%W", id(homeassistant_time).now());
+          it.printf(0, 33, id(font3), TextAlign::TOP_LEFT, "%.1f°C %.1f°C %.0fppm", id(my_temp).state, id(my_hum).state, id(my_co2).state);
+          it.line(0, 32, 256, 32);
+#         it.printf(0, 33, id(font3), TextAlign::TOP_LEFT, "%.1f°C %.0f%% %.0fppm", id(my_temp).state, id(my_hum).state, id(my_co2).state);
+      - id: page3 # my_ha_message
+        lambda: |-
+          if (id(my_ha_message).has_state()) {
+            it.printf(128, 0, id(font5), TextAlign::TOP_CENTER, "%s", id(my_ha_message).state.c_str());
+          }
+      - id: page4 # Blank page
+        lambda: |-
+          it.print(0, 0, id(font3), "");
+
+# https://esphome.io/components/display/
+
+# %a	Abbreviated weekday name	Sat
+# %A	Full weekday name	Saturday
+# %w	Weekday as decimal number, where 0 is Sunday and 6 is Saturday	6
+# %d	Day of month as zero-padded decimal number	01, 02, …, 31
+# %b	Abbreviated month name	Aug
+# %B	Full month name	August
+# %m	Month as zero-padded decimal number	01, 02, …, 12
+# %y	Year without century as a zero-padded decimal number	00, 01, …, 99
+# %Y	Year with century as a decimal number	2018
+# %H	Hour (24-hour clock) as a zero-padded decimal number	00, 01, …, 23
+# %I	Hour (12-hour clock) as a zero-padded decimal number	00, 01, …, 12
+# %p	AM or PM designation	AM, PM
+# %M	Minute as a zero-padded decimal number	00, 01, …, 59
+# %S	Second as a zero-padded decimal number	00, 01, …, 59
+# %j	Day of year as a zero-padded decimal number	001, 002, …, 366
+# %U	Week number of year (Sunday as the first day of the week) as a zero-padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.	00, 01, …, 53
+# %W	Week number of year (Monday as the first day of the week) as a zero-padded decimal number. All days in a new year preceding the first Monday are considered to be in week 0.	00, 01, …, 53
+# %c	Date and time representation	Sat Aug 18 16:31:42 2018
+# %x	Date representation	08/18/18
+# %X	Time representation	16:31:42
+# %%	A literal % character	%
+
+#interval:
+#  - interval: 5s
+#    then:
+#      - display.page.show_next: my_display
+#      - component.update: my_display
+
+font:
+  - file: 'slkscr.ttf'
+    id: my_font
+    size: 24
+  - file: 'Roboto-Regular.ttf'
+    id: font1
+    size: 8
+  - file: 'BebasNeue-Regular.ttf'
+    id: font2
+    size: 64
+  - file: 'arial.ttf'
+    id: font3
+    size: 24
+  - file: 'arial.ttf'
+    id: font4
+    size: 28
+  - file: 'arial.ttf'
+    id: font5
+    size: 32
+  - file: 'arial.ttf'
+    id: font6
+    size: 66
+  - file: 'slkscr.ttf'
+    id: font7
+    size: 32
+  - file: 'UniversLightCondensed.ttf'
+    id: font8
+    size: 66   
+
+binary_sensor:
+  - platform: gpio
+    name: "Knop 1"
+    id: Knop_1
+    filters:
+    - delayed_on_off:
+        time_on: 530ms
+        time_off: 530ms
+    pin:
+      number: GPIO4
+      mode:
+        input: true
+    on_press:
+      then:
+       - display.page.show: page1
+       - component.update: my_display
+       - switch.turn_on: feedback
+  - platform: gpio
+    name: "Knop 2"
+    filters:
+    - delayed_on_off:
+        time_on: 530ms
+        time_off: 530ms
+    pin:
+      number: GPIO3
+      mode:
+        input: true
+    on_press:
+      then:
+       - display.page.show: page2
+       - component.update: my_display
+       - switch.turn_on: feedback
+  - platform: gpio
+    name: "Knop 3"
+    filters:
+    - delayed_on_off:
+        time_on: 530ms
+        time_off: 530ms
+    pin:
+      number: GPIO1
+      mode:
+        input: true
+    on_press:
+      then:
+       - display.page.show: page3
+       - component.update: my_display
+       - switch.turn_on: feedback
+  - platform: gpio
+    name: "Knop 4"
+    filters:
+    - delayed_on_off:
+        time_on: 530ms
+        time_off: 530ms
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+    on_press:
+      then:
+       - display.page.show: page4
+       - component.update: my_display
+       - switch.turn_on: feedback
+
+switch:
+  - platform: gpio
+    pin: GPIO20
+    id: feedback
+    name: "Feedback"
+    icon: "mdi:gate"
+    on_turn_on:
+    - delay: 250ms
+    - switch.turn_off: feedback
+
+
+
+
+button:
+  - platform: template
+    id: virt
+    name: "Display-Text"
+    on_press:
+      - display.page.show: page3
+      - component.update: my_display 
+  - platform: template
+    name: "Display-Off"
+    on_press:
+      - display.page.show: page4
+      - component.update: my_display
+  - platform: template
+    name: "Time"
+    on_press:
+      - display.page.show: page1
+      - component.update: my_display
+  - platform: template
+    name: "Date"
+    on_press:
+      - display.page.show: page2
+      - component.update: my_display
+
+
+
+
+#         //it.print(0, 0, id(font1), "Hello World!");
+# it.strftime("%H%M%S", id(homeassistant_time).now());
+#       it.printf(128, 58, id(font1), TextAlign::BASELINE_CENTER, "%s", id(homeassistant_time).now());
+#    /lambda: |-
+#    /  it.printf(32, 32, id(font1), TextAlign::TOP_CENTER, "Time: %s", id(readable_ha_time).state.c_str());

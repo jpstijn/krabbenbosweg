@@ -1,0 +1,91 @@
+substitutions:
+  name: verwarming
+  friendly_name: Verwarming
+  # Set the device name
+  # Set the friendly name
+  # 160000000L of 80000000L = 80Mhz of 160Mhz Cpu frequentie
+  f_cpu: 80000000L  
+  # I define each device with its own static IP.
+  #ip_address: 192.168.1.229
+  
+
+packages:
+  common: !include Common/common-esp32.yaml
+  # gebruik Arduino library
+  #esp32-c3-arduino: !include Common/esp32-c3-arduino.yaml
+  # gebruik ESP-IDF an alternative base framework for ESP32 chips;
+  # it is recommended for variants of the ESP32 like ESP32S2, ESP32S3, ESP32C3 and single-core ESP32 chips.
+  esp32-c3-idf: !include Common/esp32-c3-idf.yaml
+#  ble_tracker-proxy: !include Common/ble_tracker-proxy.yaml
+# web server aanzetten of uit met #
+#  web-server: !include Common/web-server.yaml
+
+#  einde vaste standaard project template yaml deel
+####################################################################################
+
+# [strapping] pins GPIO 2 [RTC], GPIO 8  (Must be HIGH during reset in all cases)
+# GPIO 9 - [internal PU] [strapping]  Works as normal GPIOs after reset
+# GPIO 20 - RxD , GPIO 21 - TxD for UART download and logs
+
+i2c:
+   sda: GPIO6
+   scl: GPIO5
+   scan: true
+   id: bus_a
+
+one_wire:
+  - platform: gpio
+    pin: GPIO1
+    id: x1
+  - platform: gpio
+    pin: GPIO10
+    id: x2
+  - platform: gpio
+    pin: GPIO3
+    id: x3
+    
+sensor:
+  - platform: dallas_temp
+    one_wire_id: x1
+    name: Temp retour blauw
+    update_interval: 30s
+  - platform: dallas_temp
+    one_wire_id: x2
+    name: Temp aanvoer rood
+    update_interval: 30s
+  - platform: dallas_temp
+    one_wire_id: x3
+    name: Temp ingang vloerverwarming
+    update_interval: 30s
+  - platform: sht4x
+    address: 0x44
+    temperature:
+      name: Temperatuur trapkast
+    humidity:
+      name: Vochtigheid trapkast
+    update_interval: 30s
+
+#light:
+#  - platform: esp32_rmt_led_strip
+#    rgb_order: RGB
+#    pin: GPIO00
+#    num_leds: 1
+#    chipset: ws2812
+#    name: "RGB Led"
+#    effects:
+#      - addressable_random_twinkle:
+#      - pulse:
+#      - pulse:
+#          name: "Fast Pulse"
+#          transition_length: 0.5s
+#          update_interval: 0.5s
+#          min_brightness: 0%
+#          max_brightness: 100%
+#      - pulse:
+#          name: "Slow Pulse"
+#          transition_length: 500ms
+#          update_interval: 2s
+#      - strobe:
+#      - flicker:
+#      - addressable_color_wipe:
+    

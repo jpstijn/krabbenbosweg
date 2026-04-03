@@ -1,0 +1,119 @@
+esphome:
+  name: $name
+  friendly_name: $friendly_name
+  platformio_options:
+    board_build.flash_mode: dio
+    board_build.f_cpu: 80000000L
+  name_add_mac_suffix: false
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    #type: esp-idf
+    type: arduino
+
+packages:
+  common: !include wifi.yaml 
+
+# https://esphome.io/components/wifi
+
+captive_portal:
+
+# Enable Web server.
+web_server:
+  port: 80
+  # zonder internet optie local
+  #local: True  # Include supporting javascript locally allowing it to work without internet access. Defaults to false.
+  version: 3
+  sorting_groups:
+    - id: sorting_group_info
+      name: "Info"
+      sorting_weight: 20
+
+# Enable Home Assistant API  
+api:
+  # https://esphome.io/components/api
+
+# Allow Over-The-Air updates
+ota:
+   # https://esphome.io/components/ota
+  - platform: esphome
+    password: !secret ota_password
+
+# Enable logging
+logger:
+# Enable logging (Default = DEBUG)
+
+# Get the time from Home Assistant to sync the onboard real-time-clock.  
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+#Exposes configuration and status sensors
+sensor:
+#  - platform: template
+#    name: ${friendly_name} uptime
+  - platform: uptime
+    name: "Start datum"
+#    name: ${friendly_name} start
+    type: timestamp
+    entity_category: diagnostic
+    #Device Memory
+  - platform: template
+    id: esp_memory
+    icon: mdi:memory
+    name: ESP Free Memory
+    lambda: return heap_caps_get_free_size(MALLOC_CAP_INTERNAL) / 1024;
+    unit_of_measurement: "kB"
+    state_class: measurement
+    entity_category: "diagnostic"
+    #Device Temperature
+  - platform: internal_temperature
+    name: ESP Temperature
+    unit_of_measurement: °C
+    device_class: TEMPERATURE
+    update_interval: 60s
+    entity_category: "diagnostic"
+    #Device RSSI
+  - platform: wifi_signal
+    name: RSSI
+    id: wifi_signal_db
+    update_interval: 60s
+    entity_category: "diagnostic"
+
+
+
+# laat de wifi info zien
+text_sensor:
+    # laat de wifi info zien
+  - platform: wifi_info
+    ip_address:
+      name: IP Address
+      id: esp_ip_address
+      icon: mdi:ip-network
+      web_server:
+        sorting_group_id: sorting_group_info
+#  - platform: wifi_info
+#    mac_address:
+#      name: Mac Address
+#      id: test_c3_mac
+#      icon: mdi:ethernet
+#      web_server:
+#        sorting_group_id: sorting_group_info
+#  - platform: wifi_info
+#    scan_results:
+#      name: Scan
+#      id: test_c3_scan
+#      web_server:
+#        sorting_group_id: sorting_group_info
+
+#Exposes control buttons
+button:
+  - platform: restart
+    icon: mdi:power-cycle
+    name: "ESP Reboot"
+  - platform: factory_reset
+    disabled_by_default: True
+    name: "Factory Reset ESP"
+    id: factory_reset_all
+ 

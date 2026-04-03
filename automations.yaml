@@ -1,0 +1,453 @@
+- id: '1770049377863'
+  alias: Zon's opkomst
+  description: ''
+  triggers:
+  - trigger: sun
+    event: sunrise
+    offset: 0
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 4f23273174b160f318402fc3f28553d0
+    entity_id: 16969815276aabd09f58ead9a9ff790a
+    domain: light
+  - type: turn_off
+    device_id: c2a96afff65a527b5f5a694521ad7860
+    entity_id: 3352756a43d9d36fcea17838055ad2d6
+    domain: switch
+  mode: single
+- id: '1770050037246'
+  alias: Zon's ondergang
+  description: ''
+  triggers:
+  - trigger: sun
+    event: sunset
+    offset: 0
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 4f23273174b160f318402fc3f28553d0
+    entity_id: 16969815276aabd09f58ead9a9ff790a
+    domain: light
+  - type: turn_on
+    device_id: c2a96afff65a527b5f5a694521ad7860
+    entity_id: 3352756a43d9d36fcea17838055ad2d6
+    domain: switch
+  mode: single
+- id: '1770925368329'
+  alias: Eettafel aan
+  description: ''
+  triggers:
+  - type: powered
+    device_id: f7a272d42538ff6bd5b5edc5d1966c38
+    entity_id: 02dd1f7d76950ce345c32c33df00dd2a
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    data:
+      transition: 3
+      color_temp_kelvin: 4001
+      brightness_pct: 90
+    target:
+      entity_id: light.keuken_lampen
+  mode: single
+- id: '1770925409444'
+  alias: Eettafel uit
+  description: ''
+  triggers:
+  - type: not_powered
+    device_id: f7a272d42538ff6bd5b5edc5d1966c38
+    entity_id: 02dd1f7d76950ce345c32c33df00dd2a
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    target:
+      entity_id: light.keuken_lampen
+    data:
+      transition: 3
+      color_temp_kelvin: 4000
+  mode: single
+- id: '1770926295239'
+  alias: Aanrecht aan
+  description: ''
+  triggers:
+  - type: powered
+    device_id: fb1b0617f23199a754ae21eda9d530bd
+    entity_id: 0a475fda8d16765564075948373fcdae
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    target:
+      entity_id:
+      - light.signify_netherlands_b_v_ltv001
+      - light.aanrecht_3_white_ambiance
+      - light.aanrecht_1_white_ambiance
+    data:
+      transition: 3
+      color_temp_kelvin: 4000
+      brightness_pct: 90
+  mode: single
+- id: '1770926325987'
+  alias: Aanrecht uit
+  description: ''
+  triggers:
+  - type: not_powered
+    device_id: fb1b0617f23199a754ae21eda9d530bd
+    entity_id: 0a475fda8d16765564075948373fcdae
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    target:
+      entity_id:
+      - light.signify_netherlands_b_v_ltv001
+      - light.aanrecht_3_white_ambiance
+      - light.aanrecht_1_white_ambiance
+    data:
+      transition: 3
+      color_temp_kelvin: 4001
+  mode: single
+- id: '1770927258602'
+  alias: Controller 2
+  description: ''
+  triggers:
+  - device_id: 453241f0b204d7d7848e5683cca12a28
+    domain: bthome
+    type: button_2
+    subtype: press
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id:
+      - scene.gezellig
+    data: {}
+  mode: single
+- id: '1770927941230'
+  alias: Controller 3
+  description: ''
+  triggers:
+  - device_id: 453241f0b204d7d7848e5683cca12a28
+    domain: bthome
+    type: button_3
+    subtype: press
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id:
+      - scene.keuken_candle_light
+    data: {}
+  mode: single
+- id: '1771083115129'
+  alias: Lamp WC aan op Radar
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: d3efd4b1e382995f1532524c9d1bfa1a
+    entity_id: 1fbb5a488ba593731b7ed0cb33445e91
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 180c9996462414e54ad71e5803c912e6
+    entity_id: 33f5406ab1cfed5c6b4a1334ed770cc9
+    domain: light
+  mode: single
+- id: '1771083234841'
+  alias: Lamp WC uit Radar bij geen aanwezigheid
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: d3efd4b1e382995f1532524c9d1bfa1a
+    entity_id: 1fbb5a488ba593731b7ed0cb33445e91
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 180c9996462414e54ad71e5803c912e6
+    entity_id: 33f5406ab1cfed5c6b4a1334ed770cc9
+    domain: light
+  mode: single
+- id: '1771598748493'
+  alias: Radar Entree achter lamp aan
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 9b1f5e52acca78d5befbdc6dba721b40
+    entity_id: 7d9ce28b74f15aedcc8a55552afdd976
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 4507af437e2d2fe2e5e961b4c7270d62
+    entity_id: c11ced3fb72f5c5f8d2757c52189e2f7
+    domain: light
+  mode: single
+- id: '1771598853130'
+  alias: Radar entree achter lamp uit
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 9b1f5e52acca78d5befbdc6dba721b40
+    entity_id: 7d9ce28b74f15aedcc8a55552afdd976
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 4507af437e2d2fe2e5e961b4c7270d62
+    entity_id: c11ced3fb72f5c5f8d2757c52189e2f7
+    domain: light
+  mode: single
+- id: '1771602575085'
+  alias: Radar Hal voordeur lamp aan
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: ad9a71ee5179cd0de2f029a1f383c4d3
+    entity_id: c078d0f69f58aa0a15e0060a5bbe86fb
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 35707b7795cc4f2c550b05e89b5a3d41
+    entity_id: 4165d06b123d94380c69f8e0240fcb02
+    domain: light
+  mode: single
+- id: '1771602731924'
+  alias: Radar hal voordeur lamp uit
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: ad9a71ee5179cd0de2f029a1f383c4d3
+    entity_id: c078d0f69f58aa0a15e0060a5bbe86fb
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 35707b7795cc4f2c550b05e89b5a3d41
+    entity_id: 4165d06b123d94380c69f8e0240fcb02
+    domain: light
+  mode: single
+- id: '1771603291635'
+  alias: Radar berging Lamp aan
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 37aba432335d843ce7fc6257baf6312f
+    entity_id: 24ba57b22a3df5663bafbd19360e07b0
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
+    entity_id: d0a3ef5d8f8440006ef87c135b3527eb
+    domain: switch
+  mode: single
+- id: '1771603334328'
+  alias: Radar berging lamp uit
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 37aba432335d843ce7fc6257baf6312f
+    entity_id: 24ba57b22a3df5663bafbd19360e07b0
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
+    entity_id: 653e8ae7736540b157b664a72b3090d3
+    domain: light
+  mode: single
+- id: '1771603404642'
+  alias: Radar werkkamer plafondlamp aan
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 5098c9976515475fbb7ab9e9223d5ad6
+    entity_id: 16d48d62e9e890dbb55ab6881627e804
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 5a88e64aea84fbb5610579cbf3c258a2
+    entity_id: 0b04e66af7aa26ec346b0b8f16378f51
+    domain: switch
+  mode: single
+- id: '1771603446818'
+  alias: Radar werkkamer plafonlamp uitzetten
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 5098c9976515475fbb7ab9e9223d5ad6
+    entity_id: 16d48d62e9e890dbb55ab6881627e804
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 5a88e64aea84fbb5610579cbf3c258a2
+    entity_id: a5cfdbd90d613746ac1faa2254f38938
+    domain: light
+  mode: single
+- id: '1771775471467'
+  alias: Wasmachine klaar bericht
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.wasmachine
+    to:
+    - program_ended
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone_14_pro_stijn
+    metadata: {}
+    data:
+      message: De wasmachine is klaar
+      title: Wasmachine
+  - action: notify.mobile_app_iphone_van_annelot
+    metadata: {}
+    data:
+      message: De wasmachine is klaar
+  mode: single
+- id: '1771776247448'
+  alias: Droger klaar bericht
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.tumble_dryer
+    to:
+    - program_ended
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone_van_annelot
+    metadata: {}
+    data:
+      message: De droger is klaar
+      title: Droger
+  - action: notify.mobile_app_iphone_14_pro_stijn
+    metadata: {}
+    data:
+      message: De droger is klaar
+      title: Droger
+  mode: single
+- id: '1771955557375'
+  alias: Controller 1
+  description: ''
+  triggers:
+  - device_id: 453241f0b204d7d7848e5683cca12a28
+    domain: bthome
+    type: button_1
+    subtype: press
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.keuken_lampen
+    data: {}
+  mode: single
+- id: '1772006878200'
+  alias: Co2 Ventileren noodzakelijk melding
+  description: ''
+  triggers:
+  - type: carbon_dioxide
+    device_id: 13c2c3e014e016ba9c735dbddc6c1f1c
+    entity_id: d6a3174f047b99c1d492c0e7547081cc
+    domain: sensor
+    trigger: device
+    above: 1200
+  conditions: []
+  actions:
+  - action: notify.mobile_app_iphone_14_pro_stijn
+    metadata: {}
+    data:
+      message: Ventileren noodzakelijk Co2 boven 1200 ppm
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.co2_temp_lux_toren_rgb_led
+    data:
+      rgb_color:
+      - 241
+      - 9
+      - 9
+  mode: single
+- id: '1772018933642'
+  alias: Co2 Ventilatie OK
+  description: ''
+  triggers:
+  - type: carbon_dioxide
+    device_id: 13c2c3e014e016ba9c735dbddc6c1f1c
+    entity_id: d6a3174f047b99c1d492c0e7547081cc
+    domain: sensor
+    trigger: device
+    below: 1200
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.co2_temp_lux_toren_rgb_led
+    data: {}
+  mode: single
+- id: '1773231725734'
+  alias: Controller 4
+  description: ''
+  triggers:
+  - device_id: 453241f0b204d7d7848e5683cca12a28
+    domain: bthome
+    type: button_4
+    subtype: press
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.keuken_100
+    data: {}
+  mode: single

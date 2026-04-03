@@ -1,0 +1,730 @@
+views:
+  - type: sections
+    max_columns: 4
+    title: 2412 Radar
+    path: 2412-radar
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Detection
+            heading_style: title
+            icon: mdi:account
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.seeed_ld2412_t_presence
+                name: Presence
+                color: state
+                state_content: name
+                tap_action:
+                  action: more-info
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.seeed_ld2412_t_moving_target
+                name: Moving
+                icon: mdi:run-fast
+                color: state
+                state_content: name
+                tap_action:
+                  action: more-info
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.seeed_ld2412_t_still_target
+                name: Still
+                icon: mdi:human-male
+                color: state
+                state_content: name
+                tap_action:
+                  action: more-info
+          - type: history-graph
+            entities:
+              - entity: binary_sensor.seeed_ld2412_t_presence
+                name: Presence
+              - entity: binary_sensor.seeed_ld2412_t_moving_target
+                name: Moving
+              - entity: binary_sensor.seeed_ld2412_t_still_target
+                name: Still
+            hours_to_show: 0.05
+          - type: heading
+            icon: mdi:cog
+            heading: Configuration
+            heading_style: title
+          - type: tile
+            entity: number.seeed_ld2412_t_presence_timeout
+            features_position: inline
+            vertical: false
+            name: Timeout
+            icon: mdi:timer
+            features:
+              - type: numeric-input
+                style: buttons
+          - features:
+              - style: slider
+                type: numeric-input
+            type: tile
+            entity: number.seeed_ld2412_t_maximum_distance_gate
+            features_position: inline
+            vertical: false
+            name: Max gate
+            icon: mdi:gate
+          - features:
+              - style: slider
+                type: numeric-input
+            type: tile
+            entity: number.seeed_ld2412_t_minimum_distance_gate
+            features_position: inline
+            vertical: false
+            name: Min gate
+            icon: mdi:gate
+          - type: entities
+            entities:
+              - entity: switch.seeed_ld2412_t_engineering_mode
+            state_color: true
+            show_header_toggle: false
+          - type: tile
+            entity: switch.seeed_ld2412_t_engineering_mode
+            features_position: bottom
+            vertical: false
+            name: Engineering mode
+          - type: tile
+            entity: button.seeed_ld2412_t_query_params
+            features_position: bottom
+            vertical: false
+            name: Query params
+            hide_state: true
+          - type: tile
+            entity: sensor.seeed_ld2412_t_esp_temperature
+            features_position: bottom
+            vertical: false
+            name: Internal temperature
+          - type: tile
+            entity: sensor.seeed_ld2412_t_rssi
+            name: WiFi RSSI
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: sensor.seeed_ld2412_t_start_datum
+            name: Uptime
+            vertical: false
+            features_position: bottom
+          - type: tile
+            entity: sensor.seeed_ld2412_t_light
+            icon: mdi:sun-wireless-outline
+            color: yellow
+            vertical: false
+            features_position: bottom
+        column_span: 1
+      - type: grid
+        cards:
+          - type: heading
+            heading: Still
+            heading_style: title
+            icon: mdi:human-male
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.seeed_ld2412_t_still_target
+                color: state
+                icon: mdi:human-male
+              - type: entity
+                entity: sensor.seeed_ld2412_t_still_distance
+          - type: custom:plotly-graph
+            refresh_interval: 1
+            hours_to_show: current_day
+            layout:
+              height: 350
+              margin:
+                l: 50
+                r: 50
+                t: 50
+                b: 50
+              showlegend: true
+              legend:
+                x: 0.3
+                'y': -0.3
+              xaxis:
+                dtick: 1
+                type: number
+                fixedrange: true
+                range:
+                  - 0
+                  - 13
+              yaxis:
+                dtick: 10
+                fixedrange: true
+                range:
+                  - 0
+                  - 100
+            entities:
+              - entity: ''
+                name: Threshold
+                mode: lines
+                line:
+                  shape: spline
+                  width: 2
+                  color: FB239F
+                x:
+                  - 0
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  - 6
+                  - 7
+                  - 8
+                  - 9
+                  - 10
+                  - 11
+                  - 12
+                  - 13
+                'y':
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g0_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g1_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g2_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g3_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g4_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g5_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g6_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g7_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g8_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g9_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g10_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g11_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g12_still_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g13_still_threshold"].state
+              - entity: ''
+                name: Energy
+                mode: lines
+                line:
+                  shape: spline
+                  width: 2
+                  color: blue
+                x:
+                  - 0
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  - 6
+                  - 7
+                  - 8
+                  - 9
+                  - 10
+                  - 11
+                  - 12
+                  - 13
+                'y':
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g0_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g1_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g2_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g3_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g4_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g5_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g6_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g7_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g8_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g9_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g10_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g11_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g12_still_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g13_still_energy"].state
+            raw_plotly_config: true
+          - type: tile
+            entity: number.seeed_ld2412_t_g0_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 0 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g1_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 1 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g2_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 2 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g3_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 3 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g4_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 4 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g5_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 5 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g6_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 6 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g7_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 7 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g8_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 8 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g9_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 9 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g10_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 10 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g11_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 11 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g12_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 12 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g13_still_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 13 still threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+        visibility:
+          - condition: state
+            entity: switch.seeed_ld2412_t_engineering_mode
+            state: 'on'
+      - type: grid
+        cards:
+          - type: heading
+            heading: Moving
+            heading_style: title
+            icon: mdi:run-fast
+            badges:
+              - type: entity
+                show_state: true
+                show_icon: true
+                entity: binary_sensor.seeed_ld2412_t_moving_target
+                icon: mdi:run-fast
+                color: state
+              - type: entity
+                entity: sensor.seeed_ld2412_t_moving_distance
+          - type: custom:plotly-graph
+            refresh_interval: 1
+            hours_to_show: current_day
+            layout:
+              height: 350
+              margin:
+                l: 50
+                r: 50
+                t: 50
+                b: 50
+              showlegend: true
+              legend:
+                x: 0.3
+                'y': -0.3
+              xaxis:
+                dtick: 1
+                type: number
+                fixedrange: true
+                range:
+                  - 0
+                  - 13
+              yaxis:
+                dtick: 10
+                fixedrange: true
+                range:
+                  - 0
+                  - 100
+            entities:
+              - entity: ''
+                name: Threshold
+                mode: lines
+                line:
+                  shape: spline
+                  width: 2
+                  color: FB239F
+                x:
+                  - 0
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  - 6
+                  - 7
+                  - 8
+                  - 9
+                  - 10
+                  - 11
+                  - 12
+                  - 13
+                'y':
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g0_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g1_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g2_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g3_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g4_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g5_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g6_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g7_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g8_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g9_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g10_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g11_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g12_move_threshold"].state
+                  - >-
+                    $ex
+                    hass.states["number.seeed_ld2412_t_g13_move_threshold"].state
+              - entity: ''
+                name: Energy
+                mode: lines
+                line:
+                  shape: spline
+                  width: 2
+                  color: blue
+                x:
+                  - 0
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  - 6
+                  - 7
+                  - 8
+                  - 9
+                  - 10
+                  - 11
+                  - 12
+                  - 13
+                'y':
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g0_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g1_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g2_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g3_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g4_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g5_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g6_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g7_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g8_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g9_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g10_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g11_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g12_move_energy"].state
+                  - >-
+                    $ex
+                    hass.states["sensor.seeed_ld2412_t_g13_move_energy"].state
+            raw_plotly_config: true
+          - type: tile
+            entity: number.seeed_ld2412_t_g0_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 0 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g1_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 1 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g2_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 2 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g3_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 3 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g4_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 4 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g5_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 5 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g6_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 6 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g7_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 7 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g8_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 8 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g9_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 9 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g10_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 10 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g11_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 11 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g12_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 12 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+          - type: tile
+            entity: number.seeed_ld2412_t_g13_move_threshold
+            features_position: inline
+            vertical: false
+            name: Gate 13 move threshold
+            icon: mdi:run-fast
+            features:
+              - style: slider
+                type: numeric-input
+        visibility:
+          - condition: state
+            entity: switch.seeed_ld2412_t_engineering_mode
+            state: 'on'
+      - type: grid
+        cards: []

@@ -1,0 +1,52 @@
+substitutions:
+  name: aht20-bmp280-temp
+  friendly_name: AHT20 BMP280 Temp
+
+  
+packages:
+  device: !include Common/esp32-c3.yaml
+
+
+i2c:
+  sda: GPIO04
+  scl: GPIO03
+  scan: True
+  id: bus_a
+
+
+sensor:
+  - platform: bmp280_i2c
+    address: 0x77
+    update_interval: 60s
+    temperature:
+      name: "BMP temp"
+      filters:
+      - offset: -0.3
+      oversampling: 2x
+    pressure:
+      name: "BMP Pressure"
+  - platform: aht10
+    variant: AHT20
+    address: 0x38
+    update_interval: 60s
+    temperature:
+      name: "AHT20 temp"
+      id: aht20_temp
+      accuracy_decimals: 1
+      filters:
+      - offset: 0.3
+      - filter_out: 0.0
+      - median:
+          window_size: 3
+          send_every: 3
+          send_first_at: 1
+    humidity:
+      name: "AHT20 humidity"
+      id: aht20_humidity
+      accuracy_decimals: 1
+      filters:
+      - filter_out: 0.0
+      - median:
+          window_size: 3
+          send_every: 3
+          send_first_at: 1

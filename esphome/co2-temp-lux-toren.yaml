@@ -1,0 +1,68 @@
+substitutions:
+  name: co2-temp-lux-toren
+  friendly_name: Co2 temp lux toren
+ 
+packages:
+  device: !include Common/esp32-c3.yaml
+
+
+i2c:
+  sda: GPIO03
+  scl: GPIO04
+  scan: True
+  id: bus_a
+
+
+sensor:
+  - platform: bme280_i2c
+    address: 0x76
+    temperature:
+      name: "BME280 Temperature"
+      filters:
+      - offset: -1.1
+    pressure:
+      name: "BME280 Pressure"
+    humidity:
+      name: "BME280 Humidity"
+  - platform: scd4x
+    address: 0x62
+    update_interval: 120s
+    co2:
+      name: "CO2"
+#    temperature:
+#      name: "scd 41 Temperature"
+#      accuracy_decimals: 1
+#      filters:
+#      - offset: -2.12
+#    humidity:
+#      name: "scd 41 Humidity"
+#      accuracy_decimals: 1
+  - platform: tsl2561
+    name: "TSL2561 Ambient Light"
+    address: 0x39
+    gain: 16X
+    update_interval: 60s
+
+light:
+  - platform: esp32_rmt_led_strip
+    rgb_order: GRB
+    pin: GPIO05
+    num_leds: 1
+    chipset: ws2812
+    name: "RGB Led"
+    effects:
+      - addressable_random_twinkle:
+      - pulse:
+      - pulse:
+          name: "Fast Pulse"
+          transition_length: 0.5s
+          update_interval: 0.5s
+          min_brightness: 0%
+          max_brightness: 100%
+      - pulse:
+          name: "Slow Pulse"
+          transition_length: 500ms
+          update_interval: 2s
+      - strobe:
+      - flicker:
+      - addressable_color_wipe:

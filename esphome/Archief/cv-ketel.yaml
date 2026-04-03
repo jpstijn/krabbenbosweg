@@ -1,0 +1,79 @@
+esphome:
+  name: cv-ketel
+  friendly_name: CV-Ketel
+
+packages:
+  common: !include Common/common-esp32.yaml
+
+  esp32-c6-idf: !include Common/esp32-c6.yaml
+
+#  einde vaste standaard project template yaml deel
+####################################################################################
+
+i2c:
+   sda: GPIO6
+   scl: GPIO5
+   scan: true
+   id: bus_a
+
+one_wire:
+  - platform: gpio
+    pin: GPIO1
+    id: x1
+  - platform: gpio
+    pin: GPIO2
+    id: x2
+  - platform: gpio
+    pin: GPIO3
+    id: x3
+    
+sensor:
+  - platform: dallas_temp
+    one_wire_id: x1
+    name: Temp CV retour blauw
+    filters:
+      - offset: 0.27
+    update_interval: 30s
+  - platform: dallas_temp
+    one_wire_id: x2
+    name: Temp CV aanvoer rood
+    filters:
+      - offset: 0.27
+    update_interval: 30s
+  - platform: dallas_temp
+    one_wire_id: x3
+    name: Temp warmwater
+    filters:
+      - offset: 0.30
+    update_interval: 30s
+  - platform: sht4x
+    address: 0x44
+    temperature:
+      name: Temperatuur wasruimte
+    humidity:
+      name: Vochtigheid wasruimte
+    update_interval: 30s
+    
+light:
+  - platform: esp32_rmt_led_strip
+    rgb_order: GRB
+    pin: GPIO08
+    num_leds: 1
+    chipset: ws2812
+    name: "RGB Led"
+    effects:
+      - addressable_random_twinkle:
+      - pulse:
+      - pulse:
+          name: "Fast Pulse"
+          transition_length: 0.5s
+          update_interval: 0.5s
+          min_brightness: 0%
+          max_brightness: 100%
+      - pulse:
+          name: "Slow Pulse"
+          transition_length: 500ms
+          update_interval: 2s
+      - strobe:
+      - flicker:
+      - addressable_color_wipe:

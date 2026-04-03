@@ -1,0 +1,380 @@
+- id: '1770927340217'
+  name: Eten
+  entities:
+    light.aanrecht_1_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 204
+      color_temp_kelvin: 2702
+      hs_color:
+      - 28.391
+      - 65.659
+      rgb_color:
+      - 255
+      - 167
+      - 88
+      xy_color:
+      - 0.524
+      - 0.388
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_ltv001:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 204
+      color_temp_kelvin: 2702
+      hs_color:
+      - 28.391
+      - 65.659
+      rgb_color:
+      - 255
+      - 167
+      - 88
+      xy_color:
+      - 0.524
+      - 0.388
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 2 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.aanrecht_3_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 204
+      color_temp_kelvin: 2702
+      hs_color:
+      - 28.391
+      - 65.659
+      rgb_color:
+      - 255
+      - 167
+      - 88
+      xy_color:
+      - 0.524
+      - 0.388
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 3 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.eettafel_1_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 204
+      color_temp_kelvin: 2702
+      hs_color:
+      - 27.865
+      - 57.551
+      rgb_color:
+      - 255
+      - 176
+      - 108
+      xy_color:
+      - 0.498
+      - 0.383
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Eettafel 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+  metadata: {}
+  icon: mdi:table-chair
+- id: '1770927843063'
+  name: Koken
+  entities:
+    light.aanrecht_1_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 230
+      color_temp_kelvin: 4000
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 206
+      - 166
+      xy_color:
+      - 0.42
+      - 0.365
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_ltv001:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 230
+      color_temp_kelvin: 4000
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 206
+      - 166
+      xy_color:
+      - 0.42
+      - 0.365
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 2 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.aanrecht_3_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 230
+      color_temp_kelvin: 4000
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 206
+      - 166
+      xy_color:
+      - 0.42
+      - 0.365
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 3 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.eettafel_1_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 230
+      color_temp_kelvin: 4000
+      hs_color:
+      - 26.805
+      - 34.581
+      rgb_color:
+      - 255
+      - 206
+      - 167
+      xy_color:
+      - 0.419
+      - 0.364
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Eettafel 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+  metadata: {}
+  icon: mdi:chef-hat
+- id: '1773231588174'
+  name: Gezellig
+  entities:
+    light.aanrecht_1_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2409
+      hs_color:
+      - 29.125
+      - 75.922
+      rgb_color:
+      - 255
+      - 155
+      - 61
+      xy_color:
+      - 0.557
+      - 0.389
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_ltv001:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2409
+      hs_color:
+      - 29.125
+      - 75.922
+      rgb_color:
+      - 255
+      - 155
+      - 61
+      xy_color:
+      - 0.557
+      - 0.389
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 2 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.aanrecht_3_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2409
+      hs_color:
+      - 29.125
+      - 75.922
+      rgb_color:
+      - 255
+      - 155
+      - 61
+      xy_color:
+      - 0.557
+      - 0.389
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Aanrecht 3 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.eettafel_1_white_ambiance:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2409
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 206
+      - 166
+      xy_color:
+      - 0.42
+      - 0.365
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Eettafel 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+  metadata: {}
+  icon: mdi:chess-king
+- id: '1773424164584'
+  name: Gezellig woonkamer
+  entities:
+    update.aanrecht_1_firmware:
+      auto_update: false
+      display_precision: 2
+      installed_version: '0x01002b02'
+      in_progress: false
+      latest_version:
+      release_summary:
+      release_url:
+      skipped_version:
+      title:
+      update_percentage:
+      device_class: firmware
+      entity_picture: /api/brands/integration/zha/icon.png
+      friendly_name: Woonkamer 1 Firmware
+      supported_features: 23
+      state: unknown
+    number.aanrecht_1_huidig_niveau_bij_opstarten:
+      min: 0
+      max: 255
+      step: 1
+      mode: auto
+      friendly_name: Woonkamer 1 Huidig niveau bij opstarten
+      state: '254'
+    button.aanrecht_1_identificeren:
+      device_class: identify
+      friendly_name: Woonkamer 1 Identificeren
+      state: unknown
+    select.aanrecht_1_opstartgedrag:
+      options:
+      - 'Off'
+      - 'On'
+      - Toggle
+      - PreviousValue
+      friendly_name: Woonkamer 1 Opstartgedrag
+      state: 'On'
+    light.aanrecht_1:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 166
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Woonkamer 1
+      supported_features: 40
+      state: 'on'
+    light.aanrecht_2:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 166
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Woonkamer 2
+      supported_features: 40
+      state: 'on'
+    light.aanrecht_3:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 166
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Woonkamer 3
+      supported_features: 40
+      state: 'on'
+    light.eettafel_1:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 166
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Woonkamer 4
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_lwa004:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 166
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Woonkamer 5
+      supported_features: 40
+      state: 'on'
+  metadata: {}

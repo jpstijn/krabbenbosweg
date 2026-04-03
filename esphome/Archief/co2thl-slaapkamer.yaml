@@ -1,0 +1,75 @@
+substitutions:
+  # Set the device name
+  name: co2thl-slaapkamer
+  # Set the friendly name
+  friendly_name: Co2&T&H&L-Slaapkamer
+  # 160000000L of 80000000L = 80Mhz of 160Mhz Cpu frequentie
+  f_cpu: 80000000L  
+  # I define each device with its own static IP.
+  #ip_address: 192.168.1.228
+  
+packages:
+  common: !include Common/common-esp32.yaml
+  
+  # gebruik Arduino library
+  esp32-c3-arduino: !include Common/esp32-c3-arduino.yaml
+  
+  # gebruik ESP-IDF an alternative base framework for ESP32 chips;
+  # it is recommended for variants of the ESP32 like ESP32S2, ESP32S3, ESP32C3 and single-core ESP32 chips.
+#  esp32-c3-idf: !include Common/esp32-c3-idf.yaml
+
+#  ble_tracker-proxy: !include Common/ble_tracker-proxy.yaml
+
+  # web server aanzetten of uit met #
+#  web-server: !include Common/web-server.yaml
+
+#  einde vaste standaard project template yaml deel
+####################################################################################
+
+# [strapping] pins GPIO 2 [RTC], GPIO 8  (Must be HIGH during reset in all cases)
+# GPIO 9 - [internal PU] [strapping]  Works as normal GPIOs after reset
+# GPIO 20 - RxD , GPIO 21 - TxD for UART download and logs
+
+i2c:
+   sda: GPIO8
+   scl: GPIO9
+   scan: true
+   id: bus_a
+
+# Example configuration entry
+sensor:
+  - platform: veml7700
+    address: 0x10
+    update_interval: 60s
+    gain: 2x
+    # short variant of sensor definition:
+    ambient_light: "Ambient light"
+    # longer variant of sensor definition:
+    #actual_gain:
+    #  name: "Actual gain"
+    #full_spectrum:
+    #  name: "full_spectrum"
+  - platform: scd4x
+    co2:
+      name: "CO2"
+    temperature:
+      name: "scd 41 Temperature"
+      filters:
+      - offset: -3.7
+    humidity:
+      name: "scd 41 Humidity"
+    update_interval: 240s
+
+binary_sensor:
+  - platform: gpio
+    name: "TV 5V USB"
+    filters:
+      - delayed_on_off:
+          time_on: 2s
+          time_off: 2s
+    pin:
+      number: GPIO1
+      inverted: true
+      mode:
+        input: true
+        pullup: true 

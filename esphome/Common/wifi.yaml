@@ -1,0 +1,18 @@
+# https://esphome.io/components/wifi
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  fast_connect: True                    # My IOT SSID is hidden. This is required to connect to it. Also- speeds up connection time.
+  power_save_mode: none                 # Don't enable power-savings mode.
+  reboot_timeout: 15min                 # Reboot after 15 minutes, if we are unable to connect to wifi
+  #power_save_mode: LIGHT
+  #manual_ip:
+  #  static_ip: ${ip_address}            # I define each device with its own static IP.
+  #  gateway: 192.168.1.254
+  #  subnet: 255.255.255.0               
+    # Note- NO DNS is configured. These devices don't need DNS. I don't allow DNS on my IOT subnet.
+    # Reason being- DNS queries can be used to send data back to the internet.
+  # Enable fallback hotspot & captive portal in case wifi connection fails
+  ap:
+    ssid: "${friendly_name}"
+
