@@ -1,0 +1,23 @@
+# Databases
+*.db
+*.db-shm
+*.db-wal
+
+# Secrets & runtime
+secrets.yaml
+.ha_run.lock
+.cache/
+
+# Logs
+*.log*
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# HA internal storage (tokens, registry, …)
+.storage/
+
+# HACS (~2k+ small frontend files); reinstall via HACS after restore — keeps git add fast on slow volumes
+custom_components/hacs/
