@@ -16,8 +16,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# HA internal storage (tokens, registry, …)
-.storage/
+# HA internal storage (tokens, registry, …) — track Lovelace UI only
+.storage/*
+!.storage/lovelace
+!.storage/lovelace_dashboards
+!.storage/lovelace_resources
+!.storage/lovelace.*
 
 # HACS (~2k+ small frontend files); reinstall via HACS after restore — keeps git add fast on slow volumes
 custom_components/hacs/

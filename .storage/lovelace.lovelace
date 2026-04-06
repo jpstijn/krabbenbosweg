@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace.lovelace",
+  "data": {
+    "config": {
+      "views": [
+        {
+          "path": "default_view",
+          "title": "Home",
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.aht20_bmp280_t_h_uptime"
+                },
+                {
+                  "entity": "sensor.aht20_bmp280_t_h_access_point_name"
+                },
+                {
+                  "entity": "sensor.aht20_bmp280_t_h_aht20_humidity"
+                },
+                {
+                  "entity": "sensor.aht20_bmp280_t_h_aht20_temp"
+                }
+              ],
+              "title": "Slaapkamer "
+            },
+            {
+              "show_name": true,
+              "show_icon": false,
+              "type": "button",
+              "icon": "mdi:account-group",
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "scene.turn_on",
+                "target": {
+                  "entity_id": "scene.keuken_candle_light"
+                },
+                "data": {}
+              },
+              "show_state": false,
+              "name": "Scène inschakelen eten"
+            },
+            {
+              "show_name": true,
+              "show_icon": false,
+              "type": "button",
+              "icon": "mdi:account-group",
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "scene.turn_on",
+                "target": {
+                  "entity_id": "scene.gezellig"
+                },
+                "data": {}
+              },
+              "show_state": false,
+              "name": "Scène inschakelen gezellig"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.shelly_blu_h_t_temperatuur"
+                },
+                {
+                  "entity": "sensor.shelly_blu_h_t_luchtvochtigheid"
+                }
+              ],
+              "title": "Boven"
+            },
+            {
+              "type": "grid",
+              "square": true,
+              "columns": 3,
+              "cards": [
+                {
+                  "type": "picture-entity",
+                  "entity": "person.beelink",
+                  "aspect_ratio": "1",
+                  "show_name": false,
+                  "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50' height='50' style='background-color:%23b3e5fc'%3E%3Cg%3E%3Ctext font-family='roboto' x='50%25' y='50%25' text-anchor='middle' stroke='%23212121' font-size='1.3em' dy='.3em'%3ES%3C/text%3E%3C/g%3E%3C/svg%3E"
+                },
+                {
+                  "type": "picture-entity",
+                  "entity": "person.annelot",
+                  "aspect_ratio": "1",
+                  "show_name": false,
+                  "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50' height='50' style='background-color:%23b3e5fc'%3E%3Cg%3E%3Ctext font-family='roboto' x='50%25' y='50%25' text-anchor='middle' stroke='%23212121' font-size='1.3em' dy='.3em'%3EA%3C/text%3E%3C/g%3E%3C/svg%3E"
+                }
+              ]
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "name": "Alle lampen uit",
+              "tap_action": {
+                "action": "call-service",
+                "service": "light.turn_off",
+                "target": {
+                  "entity_id": "light.alle_binnenlampen"
+                }
+              }
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "name": "Alle lampen aan",
+              "tap_action": {
+                "action": "call-service",
+                "service": "light.turn_on",
+                "target": {
+                  "entity_id": "light.alle_binnenlampen"
+                }
+              }
+            },
+            {
+              "show_name": true,
+              "show_icon": true,
+              "type": "button",
+              "entity": "switch.smart_plug_woonkamer"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_ha_pressure",
+                  "name": "HA Pressure"
+                },
+                {
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_ha_temperatuur",
+                  "name": "HA Temperatuur"
+                },
+                {
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_ha_vochtigheid",
+                  "name": "HA Vochtigheid"
+                },
+                {
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_temperatuur_kelder",
+                  "name": "Temperatuur Kelder"
+                },
+                {
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_vochtigheid_kleder",
+                  "name": "Vochtigheid Kleder"
+                }
+              ],
+              "title": "Kelder H&T en HA H&Tp"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.co2_temp_lux_toren_bme280_humidity",
+                  "name": "BME280 Humidity"
+                },
+                {
+                  "entity": "sensor.co2_temp_lux_toren_bme280_pressure",
+                  "name": "BME280 Pressure"
+                },
+                {
+                  "entity": "sensor.co2_temp_lux_toren_bme280_temperature",
+                  "name": "BME280 Temperature"
+                },
+                {
+                  "entity": "sensor.co2_temp_lux_toren_co2",
+                  "name": "CO2"
+                },
+                {
+                  "entity": "sensor.co2_temp_lux_toren_tsl2561_ambient_light",
+                  "name": "TSL2561 Ambient Light"
+                }
+              ],
+              "title": "Co2 temp lux toren"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.outdoor_meter_197a_luchtvochtigheid",
+                  "name": "Luchtvochtigheid"
+                },
+                {
+                  "entity": "sensor.outdoor_meter_197a_temperatuur",
+                  "name": "Temperatuur"
+                }
+              ],
+              "title": "Outdoor Meter 197A"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "binary_sensor.tumble_dryer_deur",
+                  "name": "Deur"
+                },
+                {
+                  "entity": "sensor.tumble_dryer_program",
+                  "name": "Program"
+                },
+                {
+                  "entity": "sensor.tumble_dryer_program_phase",
+                  "name": "Program phase"
+                },
+                "sensor.tumble_dryer"
+              ],
+              "title": "Tumble dryer"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "binary_sensor.wasmachine_deur",
+                  "name": "Deur"
+                },
+                {
+                  "entity": "sensor.wasmachine_doeltemperatuur",
+                  "name": "Doeltemperatuur"
+                },
+                {
+                  "entity": "sensor.wasmachine_program",
+                  "name": "Program"
+                },
+                {
+                  "entity": "sensor.wasmachine_program_phase",
+                  "name": "Program phase"
+                },
+                "sensor.wasmachine"
+              ],
+              "title": "Wasmachine"
+            }
+          ],
+          "badges": []
+        }
+      ]
+    }
+  }
+}

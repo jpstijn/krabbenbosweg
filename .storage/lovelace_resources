@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace_resources",
+  "data": {
+    "items": [
+      {
+        "id": "9c4a6611c37448919c41f901bd40377e",
+        "url": "/hacsfiles/lovelace-expander-card/expander-card.js?hacstag=677140532704",
+        "type": "module"
+      },
+      {
+        "id": "48ee9e3068f040a68ee4a3ba4820d1a8",
+        "url": "/hacsfiles/Bubble-Card/bubble-card.js?hacstag=680112919316",
+        "type": "module"
+      },
+      {
+        "id": "e91df91f533b41ce97207c1595bba66b",
+        "url": "/hacsfiles/mini-graph-card/mini-graph-card-bundle.js?hacstag=1512800620130",
+        "type": "module"
+      },
+      {
+        "id": "b0d3f4c845da48f3b8a3e851c8245104",
+        "url": "/hacsfiles/status-card/status-card.js?hacstag=878557286324",
+        "type": "module"
+      },
+      {
+        "id": "0f18758c45b84bf9a98e67f18142e9c3",
+        "url": "/hacsfiles/simple-swipe-card/simple-swipe-card.js?hacstag=970744650282",
+        "type": "module"
+      },
+      {
+        "id": "7c19eaf763524352935961f2ea93d0c6",
+        "url": "/hacsfiles/lovelace-plotly-graph-card/plotly-graph-card.js?hacstag=413812496335",
+        "type": "module"
+      }
+    ]
+  }
+}
