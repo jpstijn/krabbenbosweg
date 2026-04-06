@@ -23,22 +23,13 @@
         "require_admin": false
       },
       {
-        "id": "radar_hal",
-        "show_in_sidebar": true,
+        "id": "radar_template",
+        "show_in_sidebar": false,
         "icon": "mdi:radar",
-        "title": "Radar Hal",
+        "title": "Radar Template",
         "require_admin": true,
         "mode": "storage",
-        "url_path": "radar-hal"
-      },
-      {
-        "id": "radar_werkkamer",
-        "show_in_sidebar": true,
-        "icon": "mdi:radar",
-        "title": "Radar werkkamer",
-        "require_admin": true,
-        "mode": "storage",
-        "url_path": "radar-werkkamer"
+        "url_path": "radar-template"
       }
     ]
   }

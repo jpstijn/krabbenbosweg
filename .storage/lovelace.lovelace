@@ -28,38 +28,6 @@
               "title": "Slaapkamer "
             },
             {
-              "show_name": true,
-              "show_icon": false,
-              "type": "button",
-              "icon": "mdi:account-group",
-              "tap_action": {
-                "action": "perform-action",
-                "perform_action": "scene.turn_on",
-                "target": {
-                  "entity_id": "scene.keuken_candle_light"
-                },
-                "data": {}
-              },
-              "show_state": false,
-              "name": "Scène inschakelen eten"
-            },
-            {
-              "show_name": true,
-              "show_icon": false,
-              "type": "button",
-              "icon": "mdi:account-group",
-              "tap_action": {
-                "action": "perform-action",
-                "perform_action": "scene.turn_on",
-                "target": {
-                  "entity_id": "scene.gezellig"
-                },
-                "data": {}
-              },
-              "show_state": false,
-              "name": "Scène inschakelen gezellig"
-            },
-            {
               "type": "entities",
               "entities": [
                 {

@@ -1,15 +1,15 @@
 {
   "version": 1,
   "minor_version": 1,
-  "key": "lovelace.radar_werkkamer",
+  "key": "lovelace.radar_template",
   "data": {
     "config": {
       "views": [
         {
           "type": "sections",
           "max_columns": 4,
-          "title": "2412 Werkkamer Radar",
-          "path": "2412-Werkamer-radar",
+          "title": "2412 Radar Template",
+          "path": "2412-Radar-template",
           "sections": [
             {
               "type": "grid",
@@ -24,7 +24,7 @@
                       "type": "entity",
                       "show_state": true,
                       "show_icon": true,
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_presence",
+                      "entity": "binary_sensor.radar_frontdoor_presence",
                       "name": "Presence",
                       "color": "state",
                       "state_content": "name",
@@ -36,7 +36,7 @@
                       "type": "entity",
                       "show_state": true,
                       "show_icon": true,
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_moving_target",
+                      "entity": "binary_sensor.radar_frontdoor_moving_target",
                       "name": "Moving",
                       "icon": "mdi:run-fast",
                       "color": "state",
@@ -49,7 +49,7 @@
                       "type": "entity",
                       "show_state": true,
                       "show_icon": true,
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_still_target",
+                      "entity": "binary_sensor.radar_frontdoor_still_target",
                       "name": "Still",
                       "icon": "mdi:human-male",
                       "color": "state",
@@ -64,15 +64,15 @@
                   "type": "history-graph",
                   "entities": [
                     {
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_presence",
+                      "entity": "binary_sensor.radar_frontdoor_presence",
                       "name": "Presence"
                     },
                     {
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_moving_target",
+                      "entity": "binary_sensor.radar_frontdoor_moving_target",
                       "name": "Moving"
                     },
                     {
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_still_target",
+                      "entity": "binary_sensor.radar_frontdoor_still_target",
                       "name": "Still"
                     }
                   ],
@@ -86,7 +86,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_timeout",
+                  "entity": "number.radar_frontdoor_timeout",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Timeout",
@@ -106,7 +106,7 @@
                     }
                   ],
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_maximum_distance_gate",
+                  "entity": "number.radar_frontdoor_maximum_distance_gate",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Max gate",
@@ -120,7 +120,7 @@
                     }
                   ],
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_minimum_distance_gate",
+                  "entity": "number.radar_frontdoor_minimum_distance_gate",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Min gate",
@@ -130,7 +130,7 @@
                   "type": "entities",
                   "entities": [
                     {
-                      "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode"
+                      "entity": "switch.radar_frontdoor_engineering_mode"
                     }
                   ],
                   "state_color": true,
@@ -138,14 +138,14 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "entity": "switch.radar_frontdoor_engineering_mode",
                   "features_position": "bottom",
                   "vertical": false,
                   "name": "Engineering mode"
                 },
                 {
                   "type": "tile",
-                  "entity": "button.ld2412_c3_2_werkkamer_query_params",
+                  "entity": "button.radar_frontdoor_query_params",
                   "features_position": "bottom",
                   "vertical": false,
                   "name": "Query params",
@@ -153,28 +153,28 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "sensor.ld2412_c3_2_werkkamer_internal_temp",
-                  "features_position": "bottom",
+                  "entity": "sensor.radar_frontdoor_esp_temperature",
+                  "name": "Internal temperature",
                   "vertical": false,
-                  "name": "Internal temperature"
+                  "features_position": "bottom"
                 },
                 {
                   "type": "tile",
-                  "entity": "sensor.ld2412_c3_2_werkkamer_wi_fi_rssi",
+                  "entity": "sensor.radar_frontdoor_rssi",
                   "name": "WiFi RSSI",
                   "vertical": false,
                   "features_position": "bottom"
                 },
                 {
                   "type": "tile",
-                  "entity": "sensor.ld2412_c3_2_werkkamer_uptime",
+                  "entity": "number.radar_frontdoor_timeout",
                   "name": "Uptime",
                   "vertical": false,
                   "features_position": "bottom"
                 },
                 {
                   "type": "tile",
-                  "entity": "sensor.ld2412_c3_2_werkkamer_light",
+                  "entity": "sensor.radar_frontdoor_light",
                   "icon": "mdi:sun-wireless-outline",
                   "color": "yellow",
                   "vertical": false,
@@ -196,13 +196,13 @@
                       "type": "entity",
                       "show_state": true,
                       "show_icon": true,
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_still_target",
+                      "entity": "binary_sensor.radar_frontdoor_still_target",
                       "color": "state",
                       "icon": "mdi:human-male"
                     },
                     {
                       "type": "entity",
-                      "entity": "sensor.ld2412_c3_2_werkkamer_still_distance"
+                      "entity": "sensor.radar_frontdoor_still_distance"
                     }
                   ]
                 },
@@ -268,20 +268,20 @@
                         13
                       ],
                       "y": [
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g0_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g1_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g2_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g3_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g4_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g5_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g6_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g7_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g8_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g9_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g10_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g11_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g12_still_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g13_still_threshold\"].state"
+                        "$ex hass.states[\"number.radar_frontdoor_g0_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g1_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g2_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g3_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g4_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g5_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g6_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g7_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g8_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g9_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g10_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g11_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g12_still_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g13_still_threshold\"].state"
                       ]
                     },
                     {
@@ -310,20 +310,20 @@
                         13
                       ],
                       "y": [
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g0_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g1_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g2_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g3_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g4_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g5_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g6_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g7_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g8_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g9_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g10_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g11_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g12_still_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g13_still_energy\"].state"
+                        "$ex hass.states[\"sensor.radar_frontdoor_g0_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g1_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g2_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g3_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g4_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g5_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g6_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g7_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g8_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g9_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g10_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g11_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g12_still_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g13_still_energy\"].state"
                       ]
                     }
                   ],
@@ -331,7 +331,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g0_still_threshold",
+                  "entity": "number.radar_frontdoor_g0_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 0 still threshold",
@@ -345,7 +345,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g1_still_threshold",
+                  "entity": "number.radar_frontdoor_g1_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 1 still threshold",
@@ -359,7 +359,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g2_still_threshold",
+                  "entity": "number.radar_frontdoor_g2_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 2 still threshold",
@@ -373,7 +373,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g3_still_threshold",
+                  "entity": "number.radar_frontdoor_g3_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 3 still threshold",
@@ -387,7 +387,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g4_still_threshold",
+                  "entity": "number.radar_frontdoor_g4_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 4 still threshold",
@@ -401,7 +401,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g5_still_threshold",
+                  "entity": "number.radar_frontdoor_g5_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 5 still threshold",
@@ -415,7 +415,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g6_still_threshold",
+                  "entity": "number.radar_frontdoor_g6_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 6 still threshold",
@@ -429,7 +429,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g7_still_threshold",
+                  "entity": "number.radar_frontdoor_g7_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 7 still threshold",
@@ -443,7 +443,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g8_still_threshold",
+                  "entity": "number.radar_frontdoor_g8_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 8 still threshold",
@@ -457,7 +457,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g9_still_threshold",
+                  "entity": "number.radar_frontdoor_g9_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 9 still threshold",
@@ -471,7 +471,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g10_still_threshold",
+                  "entity": "number.radar_frontdoor_g10_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 10 still threshold",
@@ -485,7 +485,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g11_still_threshold",
+                  "entity": "number.radar_frontdoor_g11_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 11 still threshold",
@@ -499,7 +499,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g12_still_threshold",
+                  "entity": "number.radar_frontdoor_g12_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 12 still threshold",
@@ -513,7 +513,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g13_still_threshold",
+                  "entity": "number.radar_frontdoor_g13_still_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 13 still threshold",
@@ -529,7 +529,7 @@
               "visibility": [
                 {
                   "condition": "state",
-                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "entity": "switch.radar_frontdoor_engineering_mode",
                   "state": "on"
                 }
               ]
@@ -547,13 +547,13 @@
                       "type": "entity",
                       "show_state": true,
                       "show_icon": true,
-                      "entity": "binary_sensor.ld2412_c3_2_werkkamer_moving_target",
+                      "entity": "binary_sensor.radar_frontdoor_moving_target",
                       "icon": "mdi:run-fast",
                       "color": "state"
                     },
                     {
                       "type": "entity",
-                      "entity": "sensor.ld2412_c3_2_werkkamer_moving_distance"
+                      "entity": "sensor.radar_frontdoor_moving_distance"
                     }
                   ]
                 },
@@ -619,20 +619,20 @@
                         13
                       ],
                       "y": [
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g0_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g1_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g2_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g3_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g4_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g5_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g6_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g7_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g8_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g9_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g10_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g11_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g12_move_threshold\"].state",
-                        "$ex hass.states[\"number.ld2412_c3_2_werkkamer_g13_move_threshold\"].state"
+                        "$ex hass.states[\"number.radar_frontdoor_g0_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g1_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g2_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g3_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g4_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g5_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g6_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g7_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g8_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g9_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g10_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g11_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g12_move_threshold\"].state",
+                        "$ex hass.states[\"number.radar_frontdoor_g13_move_threshold\"].state"
                       ]
                     },
                     {
@@ -661,20 +661,20 @@
                         13
                       ],
                       "y": [
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g0_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g1_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g2_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g3_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g4_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g5_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g6_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g7_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g8_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g9_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g10_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g11_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g12_move_energy\"].state",
-                        "$ex hass.states[\"sensor.ld2412_c3_2_werkkamer_g13_move_energy\"].state"
+                        "$ex hass.states[\"sensor.radar_frontdoor_g0_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g1_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g2_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g3_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g4_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g5_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g6_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g7_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g8_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g9_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g10_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g11_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g12_move_energy\"].state",
+                        "$ex hass.states[\"sensor.radar_frontdoor_g13_move_energy\"].state"
                       ]
                     }
                   ],
@@ -682,7 +682,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g0_move_threshold",
+                  "entity": "number.radar_frontdoor_g0_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 0 move threshold",
@@ -696,7 +696,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g1_move_threshold",
+                  "entity": "number.radar_frontdoor_g1_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 1 move threshold",
@@ -710,7 +710,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g2_move_threshold",
+                  "entity": "number.radar_frontdoor_g2_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 2 move threshold",
@@ -724,7 +724,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g3_move_threshold",
+                  "entity": "number.radar_frontdoor_g3_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 3 move threshold",
@@ -738,7 +738,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g4_move_threshold",
+                  "entity": "number.radar_frontdoor_g4_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 4 move threshold",
@@ -752,7 +752,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g5_move_threshold",
+                  "entity": "number.radar_frontdoor_g5_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 5 move threshold",
@@ -766,7 +766,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g6_move_threshold",
+                  "entity": "number.radar_frontdoor_g6_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 6 move threshold",
@@ -780,7 +780,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g7_move_threshold",
+                  "entity": "number.radar_frontdoor_g7_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 7 move threshold",
@@ -794,7 +794,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g8_move_threshold",
+                  "entity": "number.radar_frontdoor_g8_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 8 move threshold",
@@ -808,7 +808,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g9_move_threshold",
+                  "entity": "number.radar_frontdoor_g9_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 9 move threshold",
@@ -822,7 +822,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g10_move_threshold",
+                  "entity": "number.radar_frontdoor_g10_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 10 move threshold",
@@ -836,7 +836,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g11_move_threshold",
+                  "entity": "number.radar_frontdoor_g11_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 11 move threshold",
@@ -850,7 +850,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g12_move_threshold",
+                  "entity": "number.radar_frontdoor_g12_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 12 move threshold",
@@ -864,7 +864,7 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "number.ld2412_c3_2_werkkamer_g13_move_threshold",
+                  "entity": "number.radar_frontdoor_g13_move_threshold",
                   "features_position": "inline",
                   "vertical": false,
                   "name": "Gate 13 move threshold",
@@ -880,7 +880,7 @@
               "visibility": [
                 {
                   "condition": "state",
-                  "entity": "switch.ld2412_c3_2_werkkamer_engineering_mode",
+                  "entity": "switch.radar_frontdoor_engineering_mode",
                   "state": "on"
                 }
               ]
@@ -889,7 +889,8 @@
               "type": "grid",
               "cards": []
             }
-          ]
+          ],
+          "cards": []
         }
       ]
     }

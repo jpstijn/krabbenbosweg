@@ -8,15 +8,18 @@ input_select:
     name: Radar location
     icon: mdi:radar
     options:
-      - "Hal"
-      - "Werkkamer"
-    initial: "Hal"
+      - "Frontdoor"
+      - "Office"
+      - "Toilet"
+      - "Backdoor"
+      - "Storage"
+    initial: "Frontdoor"
 
 lovelace:
   dashboards:
     radar-combined:
       mode: yaml
-      title: Radars (combi)
+      title: All Radars
       icon: mdi:radar
       show_in_sidebar: true
       require_admin: true
