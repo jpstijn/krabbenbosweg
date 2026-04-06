@@ -34,28 +34,8 @@
     entity_id: 3352756a43d9d36fcea17838055ad2d6
     domain: switch
   mode: single
-- id: '1770925368329'
-  alias: Eettafel aan
-  description: ''
-  triggers:
-  - type: powered
-    device_id: f7a272d42538ff6bd5b5edc5d1966c38
-    entity_id: 02dd1f7d76950ce345c32c33df00dd2a
-    domain: binary_sensor
-    trigger: device
-  conditions: []
-  actions:
-  - action: light.toggle
-    metadata: {}
-    data:
-      transition: 3
-      color_temp_kelvin: 4001
-      brightness_pct: 90
-    target:
-      entity_id: light.keuken_lampen
-  mode: single
 - id: '1770925409444'
-  alias: Eettafel uit
+  alias: Schakelaar Keuken
   description: ''
   triggers:
   - type: not_powered
@@ -63,6 +43,11 @@
     entity_id: 02dd1f7d76950ce345c32c33df00dd2a
     domain: binary_sensor
     trigger: device
+  - type: powered
+    device_id: f7a272d42538ff6bd5b5edc5d1966c38
+    entity_id: 02dd1f7d76950ce345c32c33df00dd2a
+    domain: binary_sensor
+    trigger: device
   conditions: []
   actions:
   - action: light.toggle
@@ -71,38 +56,17 @@
       entity_id: light.keuken_lampen
     data:
       transition: 3
-      color_temp_kelvin: 4000
-  mode: single
-- id: '1770926295239'
-  alias: Aanrecht aan
-  description: ''
-  triggers:
-  - type: powered
-    device_id: fb1b0617f23199a754ae21eda9d530bd
-    entity_id: 0a475fda8d16765564075948373fcdae
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
-  conditions: []
-  actions:
-  - action: light.toggle
-    metadata: {}
-    target:
-      entity_id:
-      - light.signify_netherlands_b_v_ltv001
-      - light.aanrecht_3_white_ambiance
-      - light.aanrecht_1_white_ambiance
-    data:
-      transition: 3
-      color_temp_kelvin: 4000
-      brightness_pct: 90
   mode: single
 - id: '1770926325987'
-  alias: Aanrecht uit
+  alias: Schakelaar Aanrecht
   description: ''
   triggers:
   - type: not_powered
+    device_id: fb1b0617f23199a754ae21eda9d530bd
+    entity_id: 0a475fda8d16765564075948373fcdae
+    domain: binary_sensor
+    trigger: device
+  - type: powered
     device_id: fb1b0617f23199a754ae21eda9d530bd
     entity_id: 0a475fda8d16765564075948373fcdae
     domain: binary_sensor
@@ -118,7 +82,6 @@
       - light.aanrecht_1_white_ambiance
     data:
       transition: 3
-      color_temp_kelvin: 4001
   mode: single
 - id: '1770927258602'
   alias: Controller 2
@@ -136,7 +99,8 @@
     target:
       entity_id:
       - scene.gezellig
-    data: {}
+    data:
+      transition: 3
   mode: single
 - id: '1770927941230'
   alias: Controller 3
@@ -154,7 +118,8 @@
     target:
       entity_id:
       - scene.keuken_candle_light
-    data: {}
+    data:
+      transition: 3
   mode: single
 - id: '1771083115129'
   alias: Lamp WC aan op Radar
@@ -388,7 +353,8 @@
     metadata: {}
     target:
       entity_id: light.keuken_lampen
-    data: {}
+    data:
+      transition: 3
   mode: single
 - id: '1772006878200'
   alias: Co2 Ventileren noodzakelijk melding
@@ -449,5 +415,6 @@
     metadata: {}
     target:
       entity_id: scene.keuken_100
-    data: {}
+    data:
+      transition: 3
   mode: single

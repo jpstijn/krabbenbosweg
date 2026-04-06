@@ -79,18 +79,41 @@
       brightness: 204
       color_temp_kelvin: 2702
       hs_color:
-      - 27.865
-      - 57.551
+      - 28.391
+      - 65.659
       rgb_color:
       - 255
-      - 176
-      - 108
+      - 167
+      - 88
       xy_color:
-      - 0.498
-      - 0.383
+      - 0.524
+      - 0.388
       off_with_transition: false
       off_brightness:
       friendly_name: Eettafel 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_lto002:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 204
+      color_temp_kelvin: 2702
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 168
+      - 90
+      xy_color:
+      - 0.522
+      - 0.387
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Eettafel 2 (White Ambiance)
       supported_features: 40
       state: 'on'
   metadata: {}
@@ -176,6 +199,29 @@
       brightness: 230
       color_temp_kelvin: 4000
       hs_color:
+      - 26.895
+      - 37.733
+      rgb_color:
+      - 255
+      - 202
+      - 159
+      xy_color:
+      - 0.429
+      - 0.368
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Eettafel 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_lto002:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 230
+      color_temp_kelvin: 4000
+      hs_color:
       - 26.805
       - 34.581
       rgb_color:
@@ -187,7 +233,7 @@
       - 0.364
       off_with_transition: false
       off_brightness:
-      friendly_name: Eettafel 1 (White Ambiance)
+      friendly_name: Eettafel 2 (White Ambiance)
       supported_features: 40
       state: 'on'
   metadata: {}
@@ -273,18 +319,41 @@
       brightness: 166
       color_temp_kelvin: 2409
       hs_color:
-      - 26.812
-      - 34.87
+      - 29.125
+      - 75.922
       rgb_color:
       - 255
-      - 206
-      - 166
+      - 155
+      - 61
       xy_color:
-      - 0.42
-      - 0.365
+      - 0.557
+      - 0.389
       off_with_transition: false
       off_brightness:
       friendly_name: Eettafel 1 (White Ambiance)
+      supported_features: 40
+      state: 'on'
+    light.signify_netherlands_b_v_lto002:
+      min_color_temp_kelvin: 2202
+      max_color_temp_kelvin: 4504
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 166
+      color_temp_kelvin: 2409
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 168
+      - 90
+      xy_color:
+      - 0.522
+      - 0.387
+      off_with_transition: false
+      off_brightness:
+      friendly_name: Eettafel 2 (White Ambiance)
       supported_features: 40
       state: 'on'
   metadata: {}
