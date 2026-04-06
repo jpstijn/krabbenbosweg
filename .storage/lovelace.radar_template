@@ -153,14 +153,14 @@
                 },
                 {
                   "type": "tile",
-                  "entity": "sensor.radar_frontdoor_esp_temperature",
+                  "entity": "sensor.radar_frontdoor_internal_temp",
                   "name": "Internal temperature",
                   "vertical": false,
                   "features_position": "bottom"
                 },
                 {
                   "type": "tile",
-                  "entity": "sensor.radar_frontdoor_rssi",
+                  "entity": "sensor.radar_frontdoor_wi_fi_rssi",
                   "name": "WiFi RSSI",
                   "vertical": false,
                   "features_position": "bottom"
