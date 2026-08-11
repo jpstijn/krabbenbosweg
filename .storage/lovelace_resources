@@ -6,12 +6,12 @@
     "items": [
       {
         "id": "9c4a6611c37448919c41f901bd40377e",
-        "url": "/hacsfiles/lovelace-expander-card/expander-card.js?hacstag=677140532704",
+        "url": "/hacsfiles/lovelace-expander-card/expander-card.js?hacstag=6771405327111",
         "type": "module"
       },
       {
         "id": "48ee9e3068f040a68ee4a3ba4820d1a8",
-        "url": "/hacsfiles/Bubble-Card/bubble-card.js?hacstag=680112919316",
+        "url": "/hacsfiles/Bubble-Card/bubble-card.js?hacstag=680112919325",
         "type": "module"
       },
       {
@@ -21,12 +21,12 @@
       },
       {
         "id": "b0d3f4c845da48f3b8a3e851c8245104",
-        "url": "/hacsfiles/status-card/status-card.js?hacstag=878557286324",
+        "url": "/hacsfiles/status-card/status-card.js?hacstag=878557286331",
         "type": "module"
       },
       {
         "id": "0f18758c45b84bf9a98e67f18142e9c3",
-        "url": "/hacsfiles/simple-swipe-card/simple-swipe-card.js?hacstag=970744650282",
+        "url": "/hacsfiles/simple-swipe-card/simple-swipe-card.js?hacstag=970744650310",
         "type": "module"
       },
       {

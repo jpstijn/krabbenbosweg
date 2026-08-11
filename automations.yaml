@@ -238,12 +238,19 @@
     metadata:
       secondary: false
     trigger: device
+    id: Berging-bezet
   conditions: []
   actions:
-  - type: turn_on
-    device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
-    entity_id: d0a3ef5d8f8440006ef87c135b3527eb
-    domain: switch
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Berging-bezet
+      sequence:
+      - type: turn_on
+        device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
+        entity_id: d0a3ef5d8f8440006ef87c135b3527eb
+        domain: switch
   mode: single
 - id: '1771603334328'
   alias: Radar berging lamp uit
@@ -417,4 +424,69 @@
       entity_id: scene.keuken_100
     data:
       transition: 3
+  mode: single
+- id: '1776850919271'
+  alias: Temperatuur automatiseringen
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.outdoor_meter_197a_temperatuur
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.outdoor_meter_197a_temperatuur
+    above: sensor.co2_temp_lux_toren_bme280_temperature
+  actions:
+  - action: notify.mobile_app_iphone_14_pro_stijn
+    metadata: {}
+    data:
+      message: Het is buiten warmer dan binnen!
+      title: Buitendeuren open!
+  mode: single
+- id: '1776851170866'
+  alias: Kelder raam dicht
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.kelder_h_t_en_ha_h_tp_ha_vochtigheid
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.kelder_h_t_en_ha_h_tp_ha_vochtigheid
+    below: 70
+  actions:
+  - action: notify.mobile_app_iphone_14_pro_stijn
+    metadata: {}
+    data:
+      message: Kelder raam kan dicht
+      title: Het is niet meer vochtig in de kelder
+  - action: automation.turn_off
+    target:
+      entity_id: automation.nieuwe_automatisering
+    data:
+      stop_actions: false
+  mode: single
+- id: '1779224453660'
+  alias: Lamp Aan/Uit
+  description: ''
+  triggers:
+  - type: powered
+    device_id: b10e5ef6e9ddb7d0f083f6c894ca7f7e
+    entity_id: 356fc77b8441076e762485005bf204bc
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+  - type: not_powered
+    device_id: b10e5ef6e9ddb7d0f083f6c894ca7f7e
+    entity_id: 356fc77b8441076e762485005bf204bc
+    domain: binary_sensor
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    target:
+      entity_id: light.plafondlamp
+    data: {}
   mode: single

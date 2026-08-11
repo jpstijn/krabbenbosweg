@@ -29,7 +29,6 @@ from homeassistant.core import (
 from homeassistant.exceptions import TemplateError
 from homeassistant.helpers import (
     config_validation as cv,
-    device_registry as dr,
     entity_registry as er,
     template,
 )
@@ -57,6 +56,7 @@ from homeassistant.util import dt as dt_util
 from .common import validate_is_float
 from .const import (
     ATTR_BATTERY_LAST_REPLACED,
+    ATTR_BATTERY_LAST_REPORTED,
     ATTR_BATTERY_LOW_THRESHOLD,
     ATTR_BATTERY_QUANTITY,
     ATTR_BATTERY_TYPE,
@@ -97,24 +97,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
         vol.Optional(CONF_SOURCE_ENTITY_ID): cv.string,
     }
 )
-
-
-@callback
-def async_add_to_device(
-    hass: HomeAssistant, entry: BatteryNotesConfigEntry
-) -> str | None:
-    """Add our config entry to the device."""
-    device_registry = dr.async_get(hass)
-
-    device_id = entry.data.get(CONF_DEVICE_ID)
-
-    if device_id:
-        if device_registry.async_get(device_id):
-            device_registry.async_update_device(
-                device_id, add_config_entry_id=entry.entry_id
-            )
-            return device_id
-    return None
 
 
 async def async_setup_entry(
@@ -232,6 +214,7 @@ class BatteryNotesBatteryLowBaseSensor(BatteryNotesEntity, BinarySensorEntity):
             ATTR_BATTERY_TYPE_AND_QUANTITY,
             ATTR_NOTE,
             ATTR_BATTERY_LAST_REPLACED,
+            ATTR_BATTERY_LAST_REPORTED,
             ATTR_DEVICE_ID,
             ATTR_SOURCE_ENTITY_ID,
             ATTR_DEVICE_NAME,
@@ -248,6 +231,14 @@ class BatteryNotesBatteryLowBaseSensor(BatteryNotesEntity, BinarySensorEntity):
             ATTR_BATTERY_QUANTITY: self.coordinator.battery_quantity,
             ATTR_BATTERY_TYPE: self.coordinator.battery_type,
             ATTR_BATTERY_TYPE_AND_QUANTITY: self.coordinator.battery_type_and_quantity,
+            ATTR_BATTERY_LAST_REPORTED: (
+                self.coordinator.last_reported
+                if (
+                    self.coordinator.wrapped_battery is not None
+                    or self.coordinator.wrapped_battery_low is not None
+                )
+                else None
+            ),
             ATTR_NOTE: self.coordinator.battery_note,
         }
 
@@ -263,6 +254,35 @@ class BatteryNotesBatteryLowBaseSensor(BatteryNotesEntity, BinarySensorEntity):
         if super_attrs:
             attrs.update(super_attrs)
         return attrs
+
+
+class BatteryNotesNonTemplateBatteryLowSensor(BatteryNotesBatteryLowBaseSensor):
+    """Low battery binary sensor base for non templated entities."""
+
+    entity_description: BatteryNotesBinarySensorEntityDescription
+
+    def __init__(
+        self,
+        hass: HomeAssistant,
+        coordinator: BatteryNotesSubentryCoordinator,
+        entity_description: BatteryNotesBinarySensorEntityDescription,
+    ):
+        """Initialize the low battery binary sensor."""
+
+        super().__init__(
+            hass, entity_description=entity_description, coordinator=coordinator
+        )
+
+        registry = er.async_get(hass)
+        entity = registry.async_get(self.entity_id)
+
+        if entity is not None and entity.hidden_by != er.RegistryEntryHider.USER:
+            registry.async_update_entity(
+                self.entity_id,
+                hidden_by=er.RegistryEntryHider.INTEGRATION
+                if hass.data[MY_KEY].hide_battery_low
+                else None,
+            )
 
 
 class BatteryNotesBatteryLowBinaryTemplateSensor(
@@ -445,7 +465,9 @@ class BatteryNotesBatteryLowBinaryTemplateSensor(
         return self._state
 
 
-class BatteryNotesBatteryPercentageTemplateLowSensor(BatteryNotesBatteryLowBaseSensor):
+class BatteryNotesBatteryPercentageTemplateLowSensor(
+    BatteryNotesNonTemplateBatteryLowSensor
+):
     """Represents a low battery threshold binary sensor from a template percentage."""
 
     _attr_should_poll = False
@@ -494,7 +516,7 @@ class BatteryNotesBatteryPercentageTemplateLowSensor(BatteryNotesBatteryLowBaseS
         )
 
 
-class BatteryNotesBatteryWrappedLowSensor(BatteryNotesBatteryLowBaseSensor):
+class BatteryNotesBatteryWrappedLowSensor(BatteryNotesNonTemplateBatteryLowSensor):
     """Represents a low battery threshold binary sensor from a device percentage."""
 
     _attr_should_poll = False
@@ -556,7 +578,7 @@ class BatteryNotesBatteryWrappedLowSensor(BatteryNotesBatteryLowBaseSensor):
         )
 
 
-class BatteryNotesBatteryBinaryLowSensor(BatteryNotesBatteryLowBaseSensor):
+class BatteryNotesBatteryBinaryLowSensor(BatteryNotesNonTemplateBatteryLowSensor):
     """Represents a low battery binary sensor from a binary sensor."""
 
     _attr_should_poll = False

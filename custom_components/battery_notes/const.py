@@ -10,7 +10,7 @@ from homeassistant.helpers import config_validation as cv
 
 LOGGER: Logger = getLogger(__package__)
 
-MIN_HA_VERSION = "2025.12.0"
+MIN_HA_VERSION = "2026.2.0"
 
 DOMAIN = "battery_notes"
 NAME = "Battery Notes"
@@ -21,6 +21,7 @@ LAST_REPORTED_LEVEL = "battery_last_reported_level"
 
 DEFAULT_BATTERY_LOW_THRESHOLD = 10
 DEFAULT_BATTERY_INCREASE_THRESHOLD = 25
+STATE_WRITE_INTERVAL_SECONDS = 60 * 60  # 1 hour
 DEFAULT_LIBRARY_URL = "https://battery-notes-data.codechimp.org/library.json"
 DEFAULT_SCHEMA_URL = "https://battery-notes-data.codechimp.org/schema.json"
 FALLBACK_LIBRARY_URL = "https://raw.githubusercontent.com/andrew-codechimp/HA-Battery-Notes/main/library/library.json"  # pylint: disable=line-too-long
@@ -50,6 +51,7 @@ CONF_BATTERY_LOW_TEMPLATE = "battery_low_template"
 CONF_BATTERY_PERCENTAGE_TEMPLATE = "battery_percentage_template"
 CONF_FILTER_OUTLIERS = "filter_outliers"
 CONF_ADVANCED_SETTINGS = "advanced_settings"
+CONF_HIDE_BATTERY_LOW = "hide_battery_low"
 
 DATA_CONFIGURED_ENTITIES = "configured_entities"
 DATA_DISCOVERED_ENTITIES = "discovered_entities"
@@ -75,6 +77,7 @@ EVENT_BATTERY_NOT_REPLACED = "battery_notes_battery_not_replaced"
 EVENT_BATTERY_NOT_REPORTED = "battery_notes_battery_not_reported"
 EVENT_BATTERY_REPLACED = "battery_notes_battery_replaced"
 
+ATTR_AREA_NAME = "area_name"
 ATTR_DEVICE_ID = "device_id"
 ATTR_SOURCE_ENTITY_ID = "source_entity_id"
 ATTR_REMOVE = "remove"
