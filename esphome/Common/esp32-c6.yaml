@@ -48,9 +48,9 @@ captive_portal:
 mdns:
 
 # Status LED on Seeed XIAO ESP32-C6 (GPIO15, not inverted to match your working config)
-status_led:
-    pin:
-      number: GPIO15
+#status_led:
+#    pin:
+#      number: GPIO15
 
 #output:
 #  - platform: gpio
