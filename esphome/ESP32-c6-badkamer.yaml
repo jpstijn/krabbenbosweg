@@ -6,9 +6,20 @@ packages:
   device: !include Common/Seeed xiao ESP32-c6 base.yaml
   external-antenna: !include Common/Seeed xiao c6 external antenna.yaml
 
+esp32_ble_tracker:
+  scan_parameters:
+    # We currently use the defaults to ensure Bluetooth
+    # can co-exist with WiFi In the future we may be able to
+    # enable the built-in coexistence logic in ESP-IDF
+    active: true
+
+bluetooth_proxy:
+  active: true
+
+
 uart:
-  tx_pin: GPIO17
-  rx_pin: GPIO16
+  tx_pin: GPIO16
+  rx_pin: GPIO17
   baud_rate: 115200
   parity: NONE
   stop_bits: 1
