@@ -13,6 +13,7 @@ input_select:
       - "Toilet"
       - "Backdoor"
       - "Storage"
+      - "Overloop"
     initial: "Frontdoor"
 
 lovelace:

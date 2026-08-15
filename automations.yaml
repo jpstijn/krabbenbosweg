@@ -490,3 +490,39 @@
       entity_id: light.plafondlamp
     data: {}
   mode: single
+- id: '1786798163851'
+  alias: Overloop lampen aan
+  description: ''
+  triggers:
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.radar_overloop_presence
+    options:
+      behavior: each
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      area_id: overloop
+    data: {}
+  mode: single
+- id: '1786798231232'
+  alias: Overloop lampen uit
+  description: ''
+  triggers:
+  - trigger: occupancy.cleared
+    target:
+      entity_id: binary_sensor.radar_overloop_presence
+    options:
+      behavior: each
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    target:
+      area_id: overloop
+    data: {}
+  mode: single

@@ -2,7 +2,7 @@
 """Build dashboards/radar_combined.yaml from ONE UI-editable Lovelace dashboard.
 
 The template dashboard uses Frontdoor radar entities. The script duplicates each section
-Office, Toilet, Backdoor, and Storage (entity id substitution) and adds input_select
+Office, Toilet, Backdoor, Storage, and Overloop (entity id substitution) and adds input_select
 visibility so the UI dropdown still works.
 
 Template storage file (after you create dashboard id `radar_template` in HA):
@@ -28,6 +28,7 @@ RADAR_LOCATIONS = [
     ("Toilet", "radar_toilet"),
     ("Backdoor", "radar_backdoor"),
     ("Storage", "radar_storage"),
+    ("Overloop", "radar_overloop"),
 ]
 FRONTDOOR_ENTITY_INFIX = RADAR_LOCATIONS[0][1]
 

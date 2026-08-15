@@ -12,14 +12,14 @@ See `.gitignore`: databases (`*.db`), logs, runtime/cache, `.storage/`, `secrets
 
 ## Combined radar dashboard
 
-- **Helper:** `input_select.radar_dashboard_location` (Hal / Werkkamer) in `configuration.yaml`.
+- **Helper:** `input_select.radar_dashboard_location` (Frontdoor / Office / Toilet / Backdoor / Storage / Overloop) in `configuration.yaml`.
 - **What you edit in the HA UI:** a **storage** dashboard whose id is **`radar_template`** (creates `.storage/lovelace.radar_template`). Use the visual editor there. Optionally hide it in the sidebar under **Settings → Dashboards** if you only browse the generated **Radars (combi)** entry.
 
 - **Generated output:** `dashboards/radar_combined.yaml` (YAML mode, Git-friendly). Build it with:
 
   `python3 scripts/build_radar_combined_dashboard.py`
 
-The template must use **Hal** entity ids (`ld2412_c3_5_hal_voordeur`). The script clones the layout for **Werkkamer** (`ld2412_c3_2_werkkamer`) and wires the location dropdown. If entity names change, edit the `HAL_ENTITY_INFIX` / `WK_ENTITY_INFIX` constants in `scripts/build_radar_combined_dashboard.py`.
+The template must use **Frontdoor** entity ids (`radar_frontdoor`). The script clones the layout for the other locations (`radar_office`, `radar_toilet`, `radar_backdoor`, `radar_storage`, `radar_overloop`) and wires the location dropdown. If entity names change, edit `RADAR_LOCATIONS` in `scripts/build_radar_combined_dashboard.py`.
 
 After editing the template in the UI, re-run the script, then reload Lovelace (or restart HA). You can remove the old separate Hal/Werkkamer dashboards once the template is in place.
 
