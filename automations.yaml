@@ -526,3 +526,39 @@
       area_id: overloop
     data: {}
   mode: single
+- id: '1786800910398'
+  alias: badkamer lampen aan
+  description: ''
+  triggers:
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.radar_badkamer_presence
+    options:
+      behavior: each
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
+    data: {}
+  mode: single
+- id: '1786800949648'
+  alias: badkamer lampen uit
+  description: ''
+  triggers:
+  - trigger: occupancy.cleared
+    target:
+      entity_id: binary_sensor.radar_badkamer_presence
+    options:
+      behavior: each
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    target:
+      device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
+    data: {}
+  mode: single
