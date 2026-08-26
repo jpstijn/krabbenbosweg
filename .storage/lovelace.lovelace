@@ -202,6 +202,91 @@
             }
           ],
           "badges": []
+        },
+        {
+          "type": "sections",
+          "path": "default",
+          "max_columns": 4,
+          "title": "Default",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "heading": "Temperatuur",
+                  "icon": "mdi:thermometer"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.co2_temp_lux_toren_bme280_temperature",
+                  "name": "Keuken",
+                  "card_layout": "normal"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.outdoor_meter_197a_temperatuur",
+                  "name": "Buiten"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.shelly_blu_h_t_temperatuur",
+                  "name": "Boven"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_temperatuur_kelder",
+                  "name": "Kelder"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "New section"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "select",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "input_select.kitchen_scene"
+                }
+              ]
+            }
+          ],
+          "badges": [],
+          "header": {},
+          "cards": []
         }
       ]
     }

@@ -1,38 +1,44 @@
 - id: '1770049377863'
-  alias: Zon's opkomst
-  description: ''
+  alias: Outdoor Lights
+  description: Off at sunrise, on at sunset
   triggers:
   - trigger: sun
     event: sunrise
     offset: 0
-  conditions: []
-  actions:
-  - type: turn_off
-    device_id: 4f23273174b160f318402fc3f28553d0
-    entity_id: 16969815276aabd09f58ead9a9ff790a
-    domain: light
-  - type: turn_off
-    device_id: c2a96afff65a527b5f5a694521ad7860
-    entity_id: 3352756a43d9d36fcea17838055ad2d6
-    domain: switch
-  mode: single
-- id: '1770050037246'
-  alias: Zon's ondergang
-  description: ''
-  triggers:
+    id: sunrise
   - trigger: sun
     event: sunset
     offset: 0
+    id: sunset
   conditions: []
   actions:
-  - type: turn_on
-    device_id: 4f23273174b160f318402fc3f28553d0
-    entity_id: 16969815276aabd09f58ead9a9ff790a
-    domain: light
-  - type: turn_on
-    device_id: c2a96afff65a527b5f5a694521ad7860
-    entity_id: 3352756a43d9d36fcea17838055ad2d6
-    domain: switch
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - sunrise
+      sequence:
+      - type: turn_off
+        device_id: 4f23273174b160f318402fc3f28553d0
+        entity_id: 16969815276aabd09f58ead9a9ff790a
+        domain: light
+      - type: turn_off
+        device_id: c2a96afff65a527b5f5a694521ad7860
+        entity_id: 3352756a43d9d36fcea17838055ad2d6
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - sunset
+      sequence:
+      - type: turn_on
+        device_id: 4f23273174b160f318402fc3f28553d0
+        entity_id: 16969815276aabd09f58ead9a9ff790a
+        domain: light
+      - type: turn_on
+        device_id: c2a96afff65a527b5f5a694521ad7860
+        entity_id: 3352756a43d9d36fcea17838055ad2d6
+        domain: switch
   mode: single
 - id: '1770925409444'
   alias: Schakelaar Keuken
@@ -83,224 +89,205 @@
     data:
       transition: 3
   mode: single
-- id: '1770927258602'
-  alias: Controller 2
-  description: ''
-  triggers:
-  - device_id: 453241f0b204d7d7848e5683cca12a28
-    domain: bthome
-    type: button_2
-    subtype: press
-    trigger: device
-  conditions: []
-  actions:
-  - action: scene.turn_on
-    metadata: {}
-    target:
-      entity_id:
-      - scene.gezellig
-    data:
-      transition: 3
-  mode: single
-- id: '1770927941230'
-  alias: Controller 3
-  description: ''
-  triggers:
-  - device_id: 453241f0b204d7d7848e5683cca12a28
-    domain: bthome
-    type: button_3
-    subtype: press
-    trigger: device
-  conditions: []
-  actions:
-  - action: scene.turn_on
-    metadata: {}
-    target:
-      entity_id:
-      - scene.keuken_candle_light
-    data:
-      transition: 3
-  mode: single
 - id: '1771083115129'
-  alias: Lamp WC aan op Radar
-  description: ''
+  alias: Toilet Light
+  description: On when occupied, off when clear
   triggers:
-  - type: occupied
-    device_id: d3efd4b1e382995f1532524c9d1bfa1a
-    entity_id: 1fbb5a488ba593731b7ed0cb33445e91
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
-  conditions: []
-  actions:
-  - type: turn_on
-    device_id: 180c9996462414e54ad71e5803c912e6
-    entity_id: 33f5406ab1cfed5c6b4a1334ed770cc9
-    domain: light
-  mode: single
-- id: '1771083234841'
-  alias: Lamp WC uit Radar bij geen aanwezigheid
-  description: ''
-  triggers:
-  - type: not_occupied
-    device_id: d3efd4b1e382995f1532524c9d1bfa1a
-    entity_id: 1fbb5a488ba593731b7ed0cb33445e91
-    domain: binary_sensor
-    trigger: device
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 10
-  conditions: []
-  actions:
-  - type: turn_off
-    device_id: 180c9996462414e54ad71e5803c912e6
-    entity_id: 33f5406ab1cfed5c6b4a1334ed770cc9
-    domain: light
-  mode: single
-- id: '1771598748493'
-  alias: Radar Entree achter lamp aan
-  description: ''
-  triggers:
-  - type: occupied
-    device_id: 9b1f5e52acca78d5befbdc6dba721b40
-    entity_id: 7d9ce28b74f15aedcc8a55552afdd976
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
-  conditions: []
-  actions:
-  - type: turn_on
-    device_id: 4507af437e2d2fe2e5e961b4c7270d62
-    entity_id: c11ced3fb72f5c5f8d2757c52189e2f7
-    domain: light
-  mode: single
-- id: '1771598853130'
-  alias: Radar entree achter lamp uit
-  description: ''
-  triggers:
-  - type: not_occupied
-    device_id: 9b1f5e52acca78d5befbdc6dba721b40
-    entity_id: 7d9ce28b74f15aedcc8a55552afdd976
-    domain: binary_sensor
-    trigger: device
-  conditions: []
-  actions:
-  - type: turn_off
-    device_id: 4507af437e2d2fe2e5e961b4c7270d62
-    entity_id: c11ced3fb72f5c5f8d2757c52189e2f7
-    domain: light
-  mode: single
-- id: '1771602575085'
-  alias: Radar Hal voordeur lamp aan
-  description: ''
-  triggers:
-  - type: occupied
-    device_id: ad9a71ee5179cd0de2f029a1f383c4d3
-    entity_id: c078d0f69f58aa0a15e0060a5bbe86fb
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
-  conditions: []
-  actions:
-  - type: turn_on
-    device_id: 35707b7795cc4f2c550b05e89b5a3d41
-    entity_id: 4165d06b123d94380c69f8e0240fcb02
-    domain: light
-  mode: single
-- id: '1771602731924'
-  alias: Radar hal voordeur lamp uit
-  description: ''
-  triggers:
-  - type: not_occupied
-    device_id: ad9a71ee5179cd0de2f029a1f383c4d3
-    entity_id: c078d0f69f58aa0a15e0060a5bbe86fb
-    domain: binary_sensor
-    trigger: device
-  conditions: []
-  actions:
-  - type: turn_off
-    device_id: 35707b7795cc4f2c550b05e89b5a3d41
-    entity_id: 4165d06b123d94380c69f8e0240fcb02
-    domain: light
-  mode: single
-- id: '1771603291635'
-  alias: Radar berging Lamp aan
-  description: ''
-  triggers:
-  - type: occupied
-    device_id: 37aba432335d843ce7fc6257baf6312f
-    entity_id: 24ba57b22a3df5663bafbd19360e07b0
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
-    id: Berging-bezet
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.radar_toilet_presence
+    options:
+      behavior: each
+      for: 00:00:00
+    id: 'On'
+  - trigger: occupancy.cleared
+    target:
+      entity_id: binary_sensor.radar_toilet_presence
+    options:
+      behavior: each
+      for: 00:00:10
+    id: 'Off'
   conditions: []
   actions:
   - choose:
     - conditions:
       - condition: trigger
         id:
-        - Berging-bezet
+        - 'On'
       sequence:
       - type: turn_on
-        device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
-        entity_id: d0a3ef5d8f8440006ef87c135b3527eb
-        domain: switch
+        device_id: 180c9996462414e54ad71e5803c912e6
+        entity_id: 33f5406ab1cfed5c6b4a1334ed770cc9
+        domain: light
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - type: turn_off
+        device_id: 180c9996462414e54ad71e5803c912e6
+        entity_id: 33f5406ab1cfed5c6b4a1334ed770cc9
+        domain: light
   mode: single
-- id: '1771603334328'
-  alias: Radar berging lamp uit
-  description: ''
+- id: '1771598748493'
+  alias: Back Entrance Light
+  description: On when occupied, off when clear
   triggers:
+  - type: occupied
+    device_id: 9b1f5e52acca78d5befbdc6dba721b40
+    entity_id: 7d9ce28b74f15aedcc8a55552afdd976
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+    id: 'On'
+  - type: not_occupied
+    device_id: 9b1f5e52acca78d5befbdc6dba721b40
+    entity_id: 7d9ce28b74f15aedcc8a55552afdd976
+    domain: binary_sensor
+    trigger: device
+    id: 'Off'
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - type: turn_on
+        device_id: 4507af437e2d2fe2e5e961b4c7270d62
+        entity_id: c11ced3fb72f5c5f8d2757c52189e2f7
+        domain: light
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - type: turn_off
+        device_id: 4507af437e2d2fe2e5e961b4c7270d62
+        entity_id: c11ced3fb72f5c5f8d2757c52189e2f7
+        domain: light
+  mode: single
+- id: '1771602575085'
+  alias: Front Hall Light
+  description: On when occupied, off when clear
+  triggers:
+  - type: occupied
+    device_id: ad9a71ee5179cd0de2f029a1f383c4d3
+    entity_id: c078d0f69f58aa0a15e0060a5bbe86fb
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+    id: 'On'
+  - type: not_occupied
+    device_id: ad9a71ee5179cd0de2f029a1f383c4d3
+    entity_id: c078d0f69f58aa0a15e0060a5bbe86fb
+    domain: binary_sensor
+    trigger: device
+    id: 'Off'
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - type: turn_on
+        device_id: 35707b7795cc4f2c550b05e89b5a3d41
+        entity_id: 4165d06b123d94380c69f8e0240fcb02
+        domain: light
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - type: turn_off
+        device_id: 35707b7795cc4f2c550b05e89b5a3d41
+        entity_id: 4165d06b123d94380c69f8e0240fcb02
+        domain: light
+  mode: single
+- id: '1771603291635'
+  alias: Storage Light
+  description: On when occupied, off when clear
+  triggers:
+  - type: occupied
+    device_id: 37aba432335d843ce7fc6257baf6312f
+    entity_id: 24ba57b22a3df5663bafbd19360e07b0
+    domain: binary_sensor
+    metadata:
+      secondary: false
+    trigger: device
+    id: 'On'
   - type: not_occupied
     device_id: 37aba432335d843ce7fc6257baf6312f
     entity_id: 24ba57b22a3df5663bafbd19360e07b0
     domain: binary_sensor
     trigger: device
+    id: 'Off'
   conditions: []
   actions:
-  - type: turn_off
-    device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
-    entity_id: 653e8ae7736540b157b664a72b3090d3
-    domain: light
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - type: turn_on
+        device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
+        entity_id: d0a3ef5d8f8440006ef87c135b3527eb
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - type: turn_off
+        device_id: d6fffd44fb56ee53ba1dc75cdb889ffc
+        entity_id: 653e8ae7736540b157b664a72b3090d3
+        domain: light
   mode: single
 - id: '1771603404642'
-  alias: Radar werkkamer plafondlamp aan
-  description: ''
+  alias: Office Ceiling Light
+  description: On when occupied, off when clear
   triggers:
-  - type: occupied
-    device_id: 5098c9976515475fbb7ab9e9223d5ad6
-    entity_id: 16d48d62e9e890dbb55ab6881627e804
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.radar_office_presence
+    options:
+      behavior: each
+      for: 00:00:00
+    id: 'On'
+  - trigger: occupancy.cleared
+    target:
+      entity_id: binary_sensor.radar_office_presence
+    options:
+      behavior: each
+      for: 00:00:00
+    id: 'Off'
   conditions: []
   actions:
-  - type: turn_on
-    device_id: 5a88e64aea84fbb5610579cbf3c258a2
-    entity_id: 0b04e66af7aa26ec346b0b8f16378f51
-    domain: switch
-  mode: single
-- id: '1771603446818'
-  alias: Radar werkkamer plafonlamp uitzetten
-  description: ''
-  triggers:
-  - type: not_occupied
-    device_id: 5098c9976515475fbb7ab9e9223d5ad6
-    entity_id: 16d48d62e9e890dbb55ab6881627e804
-    domain: binary_sensor
-    trigger: device
-  conditions: []
-  actions:
-  - type: turn_off
-    device_id: 5a88e64aea84fbb5610579cbf3c258a2
-    entity_id: a5cfdbd90d613746ac1faa2254f38938
-    domain: light
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - type: turn_on
+        device_id: 5a88e64aea84fbb5610579cbf3c258a2
+        entity_id: 0b04e66af7aa26ec346b0b8f16378f51
+        domain: switch
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - type: turn_off
+        device_id: 5a88e64aea84fbb5610579cbf3c258a2
+        entity_id: a5cfdbd90d613746ac1faa2254f38938
+        domain: light
   mode: single
 - id: '1771775471467'
   alias: Wasmachine klaar bericht
@@ -346,7 +333,7 @@
       title: Droger
   mode: single
 - id: '1771955557375'
-  alias: Controller 1
+  alias: Kitchen Remote
   description: ''
   triggers:
   - device_id: 453241f0b204d7d7848e5683cca12a28
@@ -354,117 +341,112 @@
     type: button_1
     subtype: press
     trigger: device
-  conditions: []
-  actions:
-  - action: light.turn_off
-    metadata: {}
-    target:
-      entity_id: light.keuken_lampen
-    data:
-      transition: 3
-  mode: single
-- id: '1772006878200'
-  alias: Co2 Ventileren noodzakelijk melding
-  description: ''
-  triggers:
-  - type: carbon_dioxide
-    device_id: 13c2c3e014e016ba9c735dbddc6c1f1c
-    entity_id: d6a3174f047b99c1d492c0e7547081cc
-    domain: sensor
+    id: Button1
+  - device_id: 453241f0b204d7d7848e5683cca12a28
+    domain: bthome
+    type: button_2
+    subtype: press
     trigger: device
-    above: 1200
-  conditions: []
-  actions:
-  - action: notify.mobile_app_iphone_14_pro_stijn
-    metadata: {}
-    data:
-      message: Ventileren noodzakelijk Co2 boven 1200 ppm
-  - action: light.turn_on
-    metadata: {}
-    target:
-      entity_id: light.co2_temp_lux_toren_rgb_led
-    data:
-      rgb_color:
-      - 241
-      - 9
-      - 9
-  mode: single
-- id: '1772018933642'
-  alias: Co2 Ventilatie OK
-  description: ''
-  triggers:
-  - type: carbon_dioxide
-    device_id: 13c2c3e014e016ba9c735dbddc6c1f1c
-    entity_id: d6a3174f047b99c1d492c0e7547081cc
-    domain: sensor
+    id: Button2
+  - device_id: 453241f0b204d7d7848e5683cca12a28
+    domain: bthome
+    type: button_3
+    subtype: press
     trigger: device
-    below: 1200
-  conditions: []
-  actions:
-  - action: light.turn_off
-    metadata: {}
-    target:
-      entity_id: light.co2_temp_lux_toren_rgb_led
-    data: {}
-  mode: single
-- id: '1773231725734'
-  alias: Controller 4
-  description: ''
-  triggers:
+    id: Button3
   - device_id: 453241f0b204d7d7848e5683cca12a28
     domain: bthome
     type: button_4
     subtype: press
     trigger: device
+    id: Button4
   conditions: []
   actions:
-  - action: scene.turn_on
-    metadata: {}
-    target:
-      entity_id: scene.keuken_100
-    data:
-      transition: 3
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Button1
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.keuken_lampen
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Button2
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.gezellig
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Button3
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.keuken_candle_light
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Button4
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.keuken_100
+        data: {}
   mode: single
-- id: '1776850919271'
-  alias: Temperatuur automatiseringen
-  description: ''
+- id: '1772006878200'
+  alias: CO2 Ventilation LED
+  description: Red LED and notify when CO2 is high, LED off when OK
   triggers:
-  - trigger: state
-    entity_id:
-    - sensor.outdoor_meter_197a_temperatuur
-  conditions:
-  - condition: numeric_state
-    entity_id: sensor.outdoor_meter_197a_temperatuur
-    above: sensor.co2_temp_lux_toren_bme280_temperature
+  - trigger: numeric_state
+    entity_id: sensor.co2_temp_lux_toren_co2
+    above: 1200
+    id: high
+  - trigger: numeric_state
+    entity_id: sensor.co2_temp_lux_toren_co2
+    below: 1200
+    id: ok
+  conditions: []
   actions:
-  - action: notify.mobile_app_iphone_14_pro_stijn
-    metadata: {}
-    data:
-      message: Het is buiten warmer dan binnen!
-      title: Buitendeuren open!
-  mode: single
-- id: '1776851170866'
-  alias: Kelder raam dicht
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - sensor.kelder_h_t_en_ha_h_tp_ha_vochtigheid
-  conditions:
-  - condition: numeric_state
-    entity_id: sensor.kelder_h_t_en_ha_h_tp_ha_vochtigheid
-    below: 70
-  actions:
-  - action: notify.mobile_app_iphone_14_pro_stijn
-    metadata: {}
-    data:
-      message: Kelder raam kan dicht
-      title: Het is niet meer vochtig in de kelder
-  - action: automation.turn_off
-    target:
-      entity_id: automation.nieuwe_automatisering
-    data:
-      stop_actions: false
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - high
+      sequence:
+      - action: notify.mobile_app_iphone_14_pro_stijn
+        metadata: {}
+        data:
+          message: Ventileren noodzakelijk Co2 boven 1200 ppm
+      - action: light.turn_on
+        metadata: {}
+        target:
+          entity_id: light.co2_temp_lux_toren_rgb_led
+        data:
+          rgb_color:
+          - 241
+          - 9
+          - 9
+    - conditions:
+      - condition: trigger
+        id:
+        - ok
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.co2_temp_lux_toren_rgb_led
+        data: {}
   mode: single
 - id: '1779224453660'
   alias: Lamp Aan/Uit
@@ -491,8 +473,8 @@
     data: {}
   mode: single
 - id: '1786798163851'
-  alias: Overloop lampen aan
-  description: ''
+  alias: Landing Lights
+  description: Aan bij aanwezigheid, uit bij vrij
   triggers:
   - trigger: occupancy.detected
     target:
@@ -500,34 +482,40 @@
     options:
       behavior: each
       for: 00:00:00
-  conditions: []
-  actions:
-  - action: light.turn_on
-    metadata: {}
-    target:
-      area_id: overloop
-    data: {}
-  mode: single
-- id: '1786798231232'
-  alias: Overloop lampen uit
-  description: ''
-  triggers:
+    id: 'On'
   - trigger: occupancy.cleared
     target:
       entity_id: binary_sensor.radar_overloop_presence
     options:
       behavior: each
       for: 00:00:00
+    id: 'Off'
   conditions: []
   actions:
-  - action: light.turn_off
-    metadata: {}
-    target:
-      area_id: overloop
-    data: {}
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          area_id: overloop
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          area_id: overloop
+        data: {}
   mode: single
 - id: '1786800910398'
-  alias: badkamer lampen aan
+  alias: Bathroom Lights
   description: ''
   triggers:
   - trigger: occupancy.detected
@@ -536,35 +524,41 @@
     options:
       behavior: each
       for: 00:00:00
-  conditions: []
-  actions:
-  - action: light.turn_on
-    metadata: {}
-    target:
-      device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
-    data: {}
-  mode: single
-- id: '1786800949648'
-  alias: badkamer lampen uit
-  description: ''
-  triggers:
+    id: 'On'
   - trigger: occupancy.cleared
     target:
       entity_id: binary_sensor.radar_badkamer_presence
     options:
       behavior: each
       for: 00:00:00
+    id: 'Off'
   conditions: []
   actions:
-  - action: light.turn_off
-    metadata: {}
-    target:
-      device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
-    data: {}
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
+        data: {}
   mode: single
 - id: '1786804508836'
-  alias: Toilet boven lamp aan
-  description: ''
+  alias: Upstairs Toilet Light
+  description: On when occupied, off when clear
   triggers:
   - trigger: occupancy.detected
     target:
@@ -572,28 +566,35 @@
     options:
       behavior: each
       for: 00:00:00
-  conditions: []
-  actions:
-  - action: light.turn_on
-    metadata: {}
-    target:
-      device_id: 53e1c69d5963fb7f544d234edc727f4c
-    data: {}
-  mode: single
-- id: '1786804533753'
-  alias: Toilet boven lamp uit
-  description: ''
-  triggers:
+    id: 'On'
   - trigger: occupancy.cleared
     target:
-      device_id: e56a93a78e74320229dd3bd331f3a4e8
+      entity_id: binary_sensor.toilet_2_radar_toilet_boven_presence
     options:
       behavior: each
+      for: 00:00:00
+    id: 'Off'
   conditions: []
   actions:
-  - action: light.turn_off
-    metadata: {}
-    target:
-      device_id: 53e1c69d5963fb7f544d234edc727f4c
-    data: {}
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 'On'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          device_id: 53e1c69d5963fb7f544d234edc727f4c
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Off'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          device_id: 53e1c69d5963fb7f544d234edc727f4c
+        data: {}
   mode: single

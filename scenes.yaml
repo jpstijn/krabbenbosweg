@@ -1,5 +1,5 @@
 - id: '1770927340217'
-  name: Eten
+  name: Warm
   entities:
     light.aanrecht_1_white_ambiance:
       min_color_temp_kelvin: 2202
@@ -119,7 +119,7 @@
   metadata: {}
   icon: mdi:table-chair
 - id: '1770927843063'
-  name: Koken
+  name: White
   entities:
     light.aanrecht_1_white_ambiance:
       min_color_temp_kelvin: 2202
@@ -239,7 +239,7 @@
   metadata: {}
   icon: mdi:chef-hat
 - id: '1773231588174'
-  name: Gezellig
+  name: Cozy
   entities:
     light.aanrecht_1_white_ambiance:
       min_color_temp_kelvin: 2202
