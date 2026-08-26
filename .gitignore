@@ -23,5 +23,12 @@ __pycache__/
 !.storage/lovelace_resources
 !.storage/lovelace.*
 
-# HACS (~2k+ small frontend files); reinstall via HACS after restore — keeps git add fast on slow volumes
-custom_components/hacs/
+# Cloud / remote access (contains private keys)
+.cloud/
+
+# HACS integrations — reinstall via HACS (hacs/ already listed below)
+custom_components/
+
+# Runtime markers
+.HA_VERSION
+.shopping_list.json
