@@ -41,19 +41,12 @@
         domain: switch
   mode: single
 - id: '1770925409444'
-  alias: Schakelaar Keuken
-  description: ''
+  alias: Kitchen Light Switch
+  description: Toggle kitchen lights from wall switch
   triggers:
-  - type: not_powered
-    device_id: f7a272d42538ff6bd5b5edc5d1966c38
-    entity_id: 02dd1f7d76950ce345c32c33df00dd2a
-    domain: binary_sensor
-    trigger: device
-  - type: powered
-    device_id: f7a272d42538ff6bd5b5edc5d1966c38
-    entity_id: 02dd1f7d76950ce345c32c33df00dd2a
-    domain: binary_sensor
-    trigger: device
+  - trigger: state
+    entity_id:
+    - binary_sensor.shelly_1pm_mini_gen3_input_0
   conditions: []
   actions:
   - action: light.toggle
@@ -170,7 +163,7 @@
         domain: light
   mode: single
 - id: '1771602575085'
-  alias: Front Hall Light
+  alias: Front Entrance Light
   description: On when occupied, off when clear
   triggers:
   - type: occupied
@@ -373,6 +366,12 @@
         target:
           entity_id: light.keuken_lampen
         data: {}
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.kitchen_scene
+        data:
+          option: 'Off'
     - conditions:
       - condition: trigger
         id:
@@ -380,9 +379,15 @@
       sequence:
       - action: scene.turn_on
         metadata: {}
-        target:
-          entity_id: scene.gezellig
         data: {}
+        target:
+          entity_id: scene.kitchen_cozy
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.kitchen_scene
+        data:
+          option: Cozy
     - conditions:
       - condition: trigger
         id:
@@ -391,8 +396,14 @@
       - action: scene.turn_on
         metadata: {}
         target:
-          entity_id: scene.keuken_candle_light
+          entity_id: scene.kitchen_warm
         data: {}
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.kitchen_scene
+        data:
+          option: Warm
     - conditions:
       - condition: trigger
         id:
@@ -401,8 +412,14 @@
       - action: scene.turn_on
         metadata: {}
         target:
-          entity_id: scene.keuken_100
+          entity_id: scene.kitchen_white
         data: {}
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.kitchen_scene
+        data:
+          option: White
   mode: single
 - id: '1772006878200'
   alias: CO2 Ventilation LED
@@ -449,21 +466,12 @@
         data: {}
   mode: single
 - id: '1779224453660'
-  alias: Lamp Aan/Uit
-  description: ''
+  alias: Living Room Light Switch
+  description: Toggle living room lights from wall switch
   triggers:
-  - type: powered
-    device_id: b10e5ef6e9ddb7d0f083f6c894ca7f7e
-    entity_id: 356fc77b8441076e762485005bf204bc
-    domain: binary_sensor
-    metadata:
-      secondary: false
-    trigger: device
-  - type: not_powered
-    device_id: b10e5ef6e9ddb7d0f083f6c894ca7f7e
-    entity_id: 356fc77b8441076e762485005bf204bc
-    domain: binary_sensor
-    trigger: device
+  - trigger: state
+    entity_id:
+    - binary_sensor.shelly1minig3_dcda0ce3543c_input_0
   conditions: []
   actions:
   - action: light.toggle
@@ -596,5 +604,176 @@
         metadata: {}
         target:
           device_id: 53e1c69d5963fb7f544d234edc727f4c
+        data: {}
+  mode: single
+- id: '1787777764749'
+  alias: Kitchen Shelly Relay Watchdog
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.shelly_1pm_mini_gen3
+    to:
+    - 'off'
+    - unavailable
+    - unknown
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.shelly_1pm_mini_gen3
+    data: {}
+  mode: single
+- id: '1787777886080'
+  alias: Kitchen Counter Shelly Relay Watchdog
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.shelly1pmminig3_e4b063f63a84
+    to:
+    - 'off'
+    - unavailable
+    - unknown
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.shelly1pmminig3_e4b063f63a84
+    data: {}
+  mode: single
+- id: '1787778167512'
+  alias: Living room Shelly Relay Watchdog
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - switch.shelly1minig3_dcda0ce3543c
+    to:
+    - 'off'
+    - unavailable
+    - unknown
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.shelly1minig3_dcda0ce3543c
+    data: {}
+  mode: single
+- id: '1787779598184'
+  alias: Kitchen scene from dropdown
+  description: ''
+  triggers:
+  - trigger: select.selection_changed
+    target:
+      entity_id: input_select.kitchen_scene
+    options: {}
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: select.is_option_selected
+        target:
+          entity_id: input_select.kitchen_scene
+        options:
+          behavior: any
+          for: 00:00:00
+          option:
+          - 'Off'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.keuken_lampen
+        data: {}
+    - conditions:
+      - condition: select.is_option_selected
+        target:
+          entity_id: input_select.kitchen_scene
+        options:
+          behavior: any
+          for: 00:00:00
+          option:
+          - Cozy
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.kitchen_cozy
+        data: {}
+    - conditions:
+      - condition: select.is_option_selected
+        target:
+          entity_id: input_select.kitchen_scene
+        options:
+          behavior: any
+          for: 00:00:00
+          option:
+          - Warm
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.kitchen_warm
+        data: {}
+    - conditions:
+      - condition: select.is_option_selected
+        target:
+          entity_id: input_select.kitchen_scene
+        options:
+          behavior: any
+          for: 00:00:00
+          option:
+          - White
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.kitchen_white
+        data: {}
+  mode: single
+- id: '1787780593577'
+  alias: Living Room scene from Dropdown
+  description: ''
+  triggers:
+  - trigger: select.selection_changed
+    target:
+      entity_id: input_select.living_room_scene
+    options: {}
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: select.is_option_selected
+        target:
+          entity_id: input_select.living_room_scene
+        options:
+          behavior: any
+          for: 00:00:00
+          option:
+          - 'Off'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.woonkamer_toren
+        data: {}
+    - conditions:
+      - condition: select.is_option_selected
+        target:
+          entity_id: input_select.living_room_scene
+        options:
+          behavior: any
+          for: 00:00:00
+          option:
+          - Cozy
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.living_room_cozy
         data: {}
   mode: single

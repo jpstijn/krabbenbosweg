@@ -270,7 +270,8 @@
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "New section"
+                  "heading": "Set mood",
+                  "heading_style": "title"
                 },
                 {
                   "type": "custom:bubble-card",
@@ -279,7 +280,30 @@
                     "main": [],
                     "bottom": []
                   },
-                  "entity": "input_select.kitchen_scene"
+                  "entity": "input_select.kitchen_scene",
+                  "show_state": true,
+                  "show_last_changed": true,
+                  "show_last_updated": false,
+                  "show_attribute": false,
+                  "force_icon": false,
+                  "show_icon": true,
+                  "scrolling_effect": true
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "select",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "input_select.living_room_scene",
+                  "show_state": true,
+                  "show_last_changed": true,
+                  "show_last_updated": false,
+                  "show_attribute": false,
+                  "force_icon": false,
+                  "show_icon": true,
+                  "scrolling_effect": true
                 }
               ]
             }

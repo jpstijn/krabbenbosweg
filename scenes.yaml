@@ -1,5 +1,5 @@
 - id: '1770927340217'
-  name: Warm
+  name: Kitchen Warm
   entities:
     light.aanrecht_1_white_ambiance:
       min_color_temp_kelvin: 2202
@@ -359,7 +359,7 @@
   metadata: {}
   icon: mdi:chess-king
 - id: '1773424164584'
-  name: Gezellig woonkamer
+  name: Living Room Cozy
   entities:
     update.aanrecht_1_firmware:
       auto_update: false
