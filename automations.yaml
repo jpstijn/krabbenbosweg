@@ -562,3 +562,38 @@
       device_id: c3fb4e5e99fa0cb63a3f0a1a9c4e8789
     data: {}
   mode: single
+- id: '1786804508836'
+  alias: Toilet boven lamp aan
+  description: ''
+  triggers:
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.toilet_2_radar_toilet_boven_presence
+    options:
+      behavior: each
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      device_id: 53e1c69d5963fb7f544d234edc727f4c
+    data: {}
+  mode: single
+- id: '1786804533753'
+  alias: Toilet boven lamp uit
+  description: ''
+  triggers:
+  - trigger: occupancy.cleared
+    target:
+      device_id: e56a93a78e74320229dd3bd331f3a4e8
+    options:
+      behavior: each
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    target:
+      device_id: 53e1c69d5963fb7f544d234edc727f4c
+    data: {}
+  mode: single
