@@ -32,3 +32,6 @@ custom_components/
 # Runtime markers
 .HA_VERSION
 .shopping_list.json
+
+# Community files
+www/community/
