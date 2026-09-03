@@ -6,6 +6,136 @@
     "config": {
       "views": [
         {
+          "type": "sections",
+          "path": "default",
+          "max_columns": 4,
+          "title": "Default",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading_style": "title",
+                  "heading": "Temperatuur",
+                  "icon": "mdi:thermometer"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.co2_temp_lux_toren_bme280_temperature",
+                  "name": "Keuken",
+                  "card_layout": "normal"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.outdoor_meter_197a_temperatuur",
+                  "name": "Buiten"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.shelly_blu_h_t_temperatuur",
+                  "name": "Boven"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "button",
+                  "button_type": "state",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "sensor.kelder_h_t_en_ha_h_tp_temperatuur_kelder",
+                  "name": "Kelder"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Set mood",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "select",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "input_select.kitchen_scene",
+                  "show_state": true,
+                  "show_last_changed": true,
+                  "show_last_updated": false,
+                  "show_attribute": false,
+                  "force_icon": false,
+                  "show_icon": true,
+                  "scrolling_effect": true
+                },
+                {
+                  "type": "custom:bubble-card",
+                  "card_type": "select",
+                  "sub_button": {
+                    "main": [],
+                    "bottom": []
+                  },
+                  "entity": "input_select.living_room_scene",
+                  "show_state": true,
+                  "show_last_changed": true,
+                  "show_last_updated": false,
+                  "show_attribute": false,
+                  "force_icon": false,
+                  "show_icon": true,
+                  "scrolling_effect": true
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Alarmo",
+                  "heading_style": "title"
+                },
+                {
+                  "type": "tile",
+                  "entity": "alarm_control_panel.casa",
+                  "vertical": false,
+                  "features": [
+                    {
+                      "type": "alarm-modes"
+                    }
+                  ],
+                  "features_position": "bottom"
+                }
+              ]
+            }
+          ],
+          "badges": [],
+          "header": {},
+          "cards": []
+        },
+        {
           "path": "default_view",
           "title": "Home",
           "cards": [
@@ -59,19 +189,6 @@
                   "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' width='50' height='50' style='background-color:%23b3e5fc'%3E%3Cg%3E%3Ctext font-family='roboto' x='50%25' y='50%25' text-anchor='middle' stroke='%23212121' font-size='1.3em' dy='.3em'%3EA%3C/text%3E%3C/g%3E%3C/svg%3E"
                 }
               ]
-            },
-            {
-              "show_name": true,
-              "show_icon": true,
-              "type": "button",
-              "name": "Alle lampen uit",
-              "tap_action": {
-                "action": "call-service",
-                "service": "light.turn_off",
-                "target": {
-                  "entity_id": "light.alle_binnenlampen"
-                }
-              }
             },
             {
               "show_name": true,
@@ -202,115 +319,6 @@
             }
           ],
           "badges": []
-        },
-        {
-          "type": "sections",
-          "path": "default",
-          "max_columns": 4,
-          "title": "Default",
-          "sections": [
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "heading",
-                  "heading_style": "title",
-                  "heading": "Temperatuur",
-                  "icon": "mdi:thermometer"
-                },
-                {
-                  "type": "custom:bubble-card",
-                  "card_type": "button",
-                  "button_type": "state",
-                  "sub_button": {
-                    "main": [],
-                    "bottom": []
-                  },
-                  "entity": "sensor.co2_temp_lux_toren_bme280_temperature",
-                  "name": "Keuken",
-                  "card_layout": "normal"
-                },
-                {
-                  "type": "custom:bubble-card",
-                  "card_type": "button",
-                  "button_type": "state",
-                  "sub_button": {
-                    "main": [],
-                    "bottom": []
-                  },
-                  "entity": "sensor.outdoor_meter_197a_temperatuur",
-                  "name": "Buiten"
-                },
-                {
-                  "type": "custom:bubble-card",
-                  "card_type": "button",
-                  "button_type": "state",
-                  "sub_button": {
-                    "main": [],
-                    "bottom": []
-                  },
-                  "entity": "sensor.shelly_blu_h_t_temperatuur",
-                  "name": "Boven"
-                },
-                {
-                  "type": "custom:bubble-card",
-                  "card_type": "button",
-                  "button_type": "state",
-                  "sub_button": {
-                    "main": [],
-                    "bottom": []
-                  },
-                  "entity": "sensor.kelder_h_t_en_ha_h_tp_temperatuur_kelder",
-                  "name": "Kelder"
-                }
-              ]
-            },
-            {
-              "type": "grid",
-              "cards": [
-                {
-                  "type": "heading",
-                  "heading": "Set mood",
-                  "heading_style": "title"
-                },
-                {
-                  "type": "custom:bubble-card",
-                  "card_type": "select",
-                  "sub_button": {
-                    "main": [],
-                    "bottom": []
-                  },
-                  "entity": "input_select.kitchen_scene",
-                  "show_state": true,
-                  "show_last_changed": true,
-                  "show_last_updated": false,
-                  "show_attribute": false,
-                  "force_icon": false,
-                  "show_icon": true,
-                  "scrolling_effect": true
-                },
-                {
-                  "type": "custom:bubble-card",
-                  "card_type": "select",
-                  "sub_button": {
-                    "main": [],
-                    "bottom": []
-                  },
-                  "entity": "input_select.living_room_scene",
-                  "show_state": true,
-                  "show_last_changed": true,
-                  "show_last_updated": false,
-                  "show_attribute": false,
-                  "force_icon": false,
-                  "show_icon": true,
-                  "scrolling_effect": true
-                }
-              ]
-            }
-          ],
-          "badges": [],
-          "header": {},
-          "cards": []
         }
       ]
     }

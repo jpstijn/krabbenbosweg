@@ -777,3 +777,73 @@
           entity_id: scene.living_room_cozy
         data: {}
   mode: single
+- id: '1787961200001'
+  alias: Alarm iPhone notifications
+  description: Notify on triggered, armed away, and disarmed with who acted
+  triggers:
+  - trigger: state
+    entity_id:
+    - alarm_control_panel.casa
+    to:
+    - triggered
+    id: triggered
+  - trigger: state
+    entity_id:
+    - alarm_control_panel.casa
+    to:
+    - armed_away
+    id: armed_away
+  - trigger: state
+    entity_id:
+    - alarm_control_panel.casa
+    to:
+    - disarmed
+    id: disarmed
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.from_state is not none and trigger.from_state.state
+      not in [''unknown'', ''unavailable''] }}'
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - triggered
+      sequence:
+      - action: notify.mobile_app_iphone_14_pro_stijn
+        data:
+          title: Alarm triggered
+          message: 'Area: {{ state_attr(''alarm_control_panel.default'', ''friendly_name'')
+            }}
+
+            {% set sensors = state_attr(''alarm_control_panel.default'', ''open_sensors'')
+            or {} %}{% if sensors %}Sensor(s):{% for entity in sensors %}
+
+            - {{ state_attr(entity, ''friendly_name'') or entity }}{% endfor %}{%
+            else %}Sensor(s): Unknown{% endif %}'
+          data:
+            push:
+              sound:
+                name: alarm-clock.wav
+                critical: 1
+                volume: 1
+    - conditions:
+      - condition: trigger
+        id:
+        - armed_away
+      sequence:
+      - action: notify.mobile_app_iphone_14_pro_stijn
+        data:
+          title: Alarm armed away
+          message: 'Armed by: {{ state_attr(''alarm_control_panel.default'', ''changed_by'')
+            | default(''Unknown'') }}'
+    - conditions:
+      - condition: trigger
+        id: ''
+      sequence:
+      - action: notify.mobile_app_iphone_14_pro_stijn
+        data:
+          title: Alarm disarmed
+          message: 'Disarmed by: {{ state_attr(''alarm_control_panel.default'', ''changed_by'')
+            | default(''Unknown'') }}'
+  mode: single
